@@ -1,87 +1,74 @@
 <h1>New Play</h1>
 
 
-<script src="https://www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js">
-</script>
-<script type="text/javascript">
-  var app_id = "711281B8";
-  var namespace = "urn:x-cast:com.ls.cast.sample";
-
-  function log(str)
-  {
-    console.log(str);
-
-    var newSpan = document.createElement("span");
-    var newContent = document.createTextNode(str);
-    newSpan.appendChild(newContent);
-
-    var root = document.getElementById("root");
-    root.appendChild(newSpan);
-    root.appendChild(document.createElement("br"));
-  }
-
-  function onChannelOpened(event)
-  {
-    log("onChannelOpened. Total number of channels: " + window.castReceiverManager.getSenders().length);
-  }
-
-  function onChannelClosed(event)
-  {
-    log("onChannelClosed. Total number of channels: " + window.castReceiverManager.getSenders().length);
-    if (window.castReceiverManager.getSenders().length == 0) window.close();
-  }
-
-  function onError()
-  {
-    log("onError");
-  }
-
-  function onMessage(event)
-  {
-    var message = event.data;
-    var senderId = event.senderId;
-    log("message from: " + senderId + " message: " + message);
-  }
-
-  function onLoad()
-  {
-    log("document loaded");
-
-    window.castReceiverManager = cast.receiver.CastReceiverManager.getInstance();
-
-    window.castReceiverManager.onSenderConnected = onChannelOpened;
-    window.castReceiverManager.onSenderDisconnected = onChannelClosed;
-
-    window.customMessageBus = window.castReceiverManager.getCastMessageBus(namespace);
-    window.customMessageBus.onMessage = onMessage;
-
-
-    window.castReceiverManager.start();
-
-    log("cast started");
-
-    window.setInterval(onTimer, 2000);
-  }
-
-  function onTimer()
-  {
-    broadcast("timer");
-  }
-
-  function broadcast(message)
-  {
-    window.customMessageBus.broadcast(message);
-  }
-
-  window.addEventListener("load", onLoad);
-</script>
-
+<head>
+  <title>Google Cast Chrome Sender SDK: Hello Videos</title>
+  <link rel="stylesheet" type="text/css" href="../css/demo.css">
+  <script type="text/javascript" src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js"></script>
+  <script src="../helloVideos.js"></script>
+</head>
 <body>
-<div id="root" style="position:absolute; top:0; left:0; height:100%; width:100%; color:#FFFFFF;" />
-chromecast demo<br>
-</div>
-</body>
+<div>
+  <div>
+    <h2 style="display:block">Google Cast Chrome Sender SDK: Hello Videos</h2>
+    <div style="float:left; width:100%; margin:10px;">
+      <h3 style="display: inline-block">Choose a media below or enter your own media URL to cast</h3><br>
+      <span style="font-weight:bold; color:#0000cc;">Enter custom media URL</span>: <input type="text" name="customMediaURL" value="" size="70" id="customMediaURL"><br>
+      <input type="submit" name="loadCustomMeida" value="Load Custom Media" onclick="loadCustomMedia();">
+    </div>
+    <br>
+    <div style="width:80%; margin:10px;">
+      <div style="margin:0px; float:left; width: 40%;">
+        <input type="radio" checked name="media" onclick="selectMedia(0);">Big Buck Bunny MP4<br>
+        <input type="radio" name="media" onclick="selectMedia(1);">Elephants Dream MP4<br>
+        <input type="radio" name="media" onclick="selectMedia(2);">Tears of Steel MOV<br>
+        <input type="radio" name="media" onclick="selectMedia(3);">Reel MP4<br>
+        <input type="radio" name="media" onclick="selectMedia(4);">Google I/O 2011 MP3<br>
+      </div>
+      <div style="margin:0px; float:left; width:250px;">
+        <img src="../images/bunny.jpg" width="250" id="thumb">
+        <img src="../images/cast_icon_idle.png" id="casticon" width="30">
+      </div>
+    </div>
 
+    <div style=" margin:0px; float:left; display:block; width:90%;">
+      <div style=" margin:10px; float:left; display:block; width:40%;">
+        <button onclick="launchApp()">Launch app</button>
+        <button onclick="stopApp()">Stop app</button>
+        <button id="joinsessionbyid" style="float:right; display:none;" onclick="joinSessionBySessionId()">Join by session ID</button>
+        <br>
+        <button onclick="loadMedia()">Load media</button>
+        <button id="playpauseresume" onclick="playMedia()">Play</button>
+        <button onclick="stopMedia()">Stop media</button>
+        <button id="muteunmute" onclick="muteMedia();">Mute media</button>
+        <button id="getstatus" onclick="getMediaStatus();">Get media status</button>
+      </div>
+
+      <div style="margin-top:60px; float:left; width:15%;">
+        <input class="vertical" type="range" min="0" max="100" step="1" onmouseup="setReceiverVolume(1-this.value/100,false);">
+        <div class="vertical">Volume control</div>
+      </div>
+    </div>
+  </div>
+  <div style=" margin:10px; float:left; display:block; width:100%;">
+    <div style="margin:10px;">
+      Progress : <input id="progress" type="range" min="1" max="100" value="1" step="1" onmouseup="seekMedia(this.value);">
+      <span id="duration"></span>
+      <div id="progress_tick"></div>
+    </div>
+    <div style="margin:10px;">
+      State : <span id="playerstate">IDLE</span>
+    </div>
+
+    <div style="margin:10px;">
+        <textarea rows="20" cols="70" id="debugmessage">
+        </textarea>
+    </div>
+
+  </div>
+</div>
+
+</body>
 
 <%= render 'form' %>
 
