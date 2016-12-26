@@ -1,61 +1,86 @@
 <h1>New Play</h1>
 
 
-<head>
-  <!-- Change the title tag to your app's name to display as the details text on the Cast device picker -->
-  <title>Casting app name</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../player.css" />
-  <script type="text/javascript" src="https://www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js"></script>
-  <script type="text/javascript" src="https://www.gstatic.com/cast/sdk/libs/mediaplayer/1.0.0/media_player.js"></script>
-  <script type="text/javascript" src="../player.js"></script>
-</head>
-<body style="margin: 0">
-<div id="player" class="player">
-  <div class="media">
-    <video></video>
-  </div>
-  <div class="logo"></div>
-  <div class="spinner"></div>
-  <div class="watermark"></div>
-  <div class="gradient"></div>
-  <div class="overlay">
-    <div class="media-info">
-      <div class="media-artwork"></div>
-      <div class="media-text">
-        <div class="media-title"></div>
-        <div class="media-subtitle"></div>
-      </div>
-    </div>
-    <div class="preview-mode-info">
-      <div class="preview-mode-artwork"></div>
-      <div class="preview-mode-text">
-        <div class="preview-mode-timer">
-          <div class="preview-mode-timer-starts">Up next in&nbsp;</div>
-          <div class="preview-mode-timer-countdown"></div>
-          <div class="preview-mode-timer-sec">&nbsp;secs...</div>
-        </div>
-        <div class="preview-mode-title"></div>
-        <div class="preview-mode-subtitle"></div>
-      </div>
-    </div>
-    <div class="controls">
-      <span class="controls-play-pause"></span>
-      <span class="controls-cur-time"></span>
-      <span class="controls-total-time"></span>
-      <div class="controls-progress">
-        <div class="controls-progress-inner progressBar"></div>
-        <div class="controls-progress-thumb"></div>
-      </div>
-    </div>
-  </div>
-</div>
-<script>
-  var playerDiv = document.getElementById('player');
-  new sampleplayer.CastPlayer(playerDiv).start();
+<script src="https://www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js">
 </script>
-</body>
+<script type="text/javascript">
+  var app_id = "711281B8";
+  var namespace = "urn:x-cast:com.ls.cast.sample";
 
+  function log(str)
+  {
+    console.log(str);
+
+    var newSpan = document.createElement("span");
+    var newContent = document.createTextNode(str);
+    newSpan.appendChild(newContent);
+
+    var root = document.getElementById("root");
+    root.appendChild(newSpan);
+    root.appendChild(document.createElement("br"));
+  }
+
+  function onChannelOpened(event)
+  {
+    log("onChannelOpened. Total number of channels: " + window.castReceiverManager.getSenders().length);
+  }
+
+  function onChannelClosed(event)
+  {
+    log("onChannelClosed. Total number of channels: " + window.castReceiverManager.getSenders().length);
+    if (window.castReceiverManager.getSenders().length == 0) window.close();
+  }
+
+  function onError()
+  {
+    log("onError");
+  }
+
+  function onMessage(event)
+  {
+    var message = event.data;
+    var senderId = event.senderId;
+    log("message from: " + senderId + " message: " + message);
+  }
+
+  function onLoad()
+  {
+    log("document loaded");
+
+    window.castReceiverManager = cast.receiver.CastReceiverManager.getInstance();
+
+    window.castReceiverManager.onSenderConnected = onChannelOpened;
+    window.castReceiverManager.onSenderDisconnected = onChannelClosed;
+
+    window.customMessageBus = window.castReceiverManager.getCastMessageBus(namespace);
+    window.customMessageBus.onMessage = onMessage;
+
+
+    window.castReceiverManager.start();
+
+    log("cast started");
+
+    window.setInterval(onTimer, 2000);
+  }
+
+  function onTimer()
+  {
+    broadcast("timer");
+  }
+
+  function broadcast(message)
+  {
+    window.customMessageBus.broadcast(message);
+  }
+
+  window.addEventListener("load", onLoad);
+</script>
+
+<body>
+<div id="root" style="position:absolute; top:0; left:0; height:100%; width:100%; color:#FFFFFF;" />
+chromecast demo<br>
+</div>
+</body>
 
 
 <%= render 'form' %>
