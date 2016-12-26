@@ -1,6 +1,15 @@
 
 <% provide(:title, 'Home')%>
- <div class="center hero-unit">
+
+
+<cross-domain-policy>
+  <site-control permitted-cross-domain-policies="all"/>
+  <allow-access-from domain="*" secure="false"/>
+  <allow-http-request-headers-from domain="*" headers="*" secure="false"/>
+</cross-domain-policy>
+
+<div class="center hero-unit">
+
 <h1>StaticPages#home</h1>
 
  <h2>
@@ -12,3 +21,47 @@
 <%= link_to "Sign up now!", '#', class: "btn btn-large btn-primary" %>
   </div>
 <%= link_to image_tag('rails-logo.svg', alt: "Rails"), 'http://rubyonrails.org/' %>
+
+<!-- Include Radiant Media Player JavaScript file in your <body> or <head> -->
+<script src="https://cdn.radiantmediatechs.com/rmp/v3/latest/js/rmp.min.js"></script>
+<!-- Set up your wrapper div with its unique id -->
+<div id="rmpPlayer"></div>
+<!-- Set up player configuration options -->
+<script>
+  // First we specify bitrates to feed to the player
+  var bitrates = {
+    dash: 'https://strm-msknrd.showjet.ru/rc-01/enc/widevine/fhd/hd_audio/b02ce150-475a-45db-9320-7b397e660cb4.ism/.mpd?max_bitrate=2500000'
+  };
+  // Then our MPEG-DASH custom protection data
+  var protectionData = {
+    "com.widevine.alpha": {
+      "serverURL": "https://irdeto.showjet.ru/widevine/getlicense?ContentId=0568_SecretsandLies_S01_E01_streamcid&CrmId=showjet&AccountId=showjet&SessionId=2F37A0B627471375&Ticket=8D0429C59A5B2A63",
+
+    },
+    "com.microsoft.playready": {
+      "serverURL": "http://drm-playready-licensing.axtest.net/AcquireLicense",
+      "httpRequestHeaders": {
+        "X-AxDRM-Message": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXJzaW9uIjoxLCJjb21fa2V5X2lkIjoiNjllNTQwODgtZTllMC00NTMwLThjMWEtMWViNmRjZDBkMTRlIiwibWVzc2FnZSI6eyJ0eXBlIjoiZW50aXRsZW1lbnRfbWVzc2FnZSIsImtleXMiOlt7ImlkIjoiNmU1YTFkMjYtMjc1Ny00N2Q3LTgwNDYtZWFhNWQxZDM0YjVhIn1dfX0.yF7PflOPv9qHnu3ZWJNZ12jgkqTabmwXbDWk_47tLNE"
+      }
+    }
+  };
+  // Then we set our player settings
+  var settings = {
+    licenseKey: 'Y2lla21xZXNrbyEqXyVjPWt6N3NpK3ZvYz1rejJvOD9yb201ZGFzaXMzMGRiMEElXyo=',
+    bitrates: bitrates,
+    delayToFade: 3000,
+    width: 640,
+    height: 360,
+    dashProtectionData: protectionData,
+    debug: true,
+    streamDebug: true,
+    skin: 's1',
+    poster: 'https://www.radiantmediaplayer.com/images/poster-rmp-showcase.jpg'
+  };
+  // Reference to the wrapper div (unique id)
+  var element = 'rmpPlayer';
+  // Create an object based on RadiantMP constructor
+  var rmp = new RadiantMP(element);
+  // Initialization ... test your page and done!
+  rmp.init(settings);
+</script>

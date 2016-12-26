@@ -1,0 +1,65 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Users</h1>
+
+<!-- Include Radiant Media Player JavaScript file in your <body> or <head> -->
+<script src="https://cdn.radiantmediatechs.com/rmp/v3/latest/js/rmp.min.js"></script>
+<!-- Set up your wrapper div with its unique id -->
+<div id="rmpPlayer"></div>
+<!-- Set up player configuration options -->
+<script>
+  // Our HLS AES-128 stream
+  var bitrates = {
+    hls: 'https://strm-msknrd.showjet.ru/rc-01/enc/aes/fhd/hd_audio/374135e3-599c-43ff-a9c7-e9b46b0f8bfd.ism/.m3u8'
+  };
+  // Then we set our player settings
+  var settings = {
+    // licenseKey: 'your-license-key',
+    bitrates: bitrates,
+    delayToFade: 3000,
+    width: 640,
+    height: 360,
+    skin: 's3',
+    poster: 'https://www.radiantmediaplayer.com/images/poster-rmp-showcase.jpg'
+  };
+  // Reference to the wrapper div (unique id)
+  var element = 'rmpPlayer';
+  // Create an object based on RadiantMP constructor
+  var rmp = new RadiantMP(element);
+  // Initialization ... test your page and done!
+  rmp.init(settings);
+</script>
+
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>Right</th>
+      <th>String</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.phone %></td>
+        <td><%= user.email %></td>
+        <td><%= user.right %></td>
+        <td><%= user.string %></td>
+        <td><%= link_to 'Show', user %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User', new_user_path %>

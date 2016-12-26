@@ -1,3 +1,500 @@
-c
-<h1>StaticPages#help</h1>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Аренда квартир - Cian.Webtm.Ru</title>
+//  <link rel="stylesheet" href="/flats/css/style.css" type="text/css" />
+  <link href='https://fonts.googleapis.com/css?family=EB+Garamond&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+//  <link rel="stylesheet" href="/flats/css/print.css" type="text/css" media="print" />
+  <script type="text/javascript" src="http://yandex.st/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/flats/js/jquery-ui-1.8.16.custom.min.js"></script>
+  // <link rel="stylesheet" href="/flats/js/smoothness/jquery-ui-1.8.16.custom.css" type="text/css" />
+  <script type="text/javascript" src="/flats/js/jquery-ui-timepicker-addon.js"></script>
+  <script type="text/javascript" src="/flats/js/js.js?t=1476728148"></script>
+  <script type="text/javascript" src="/flats/js/browser.js"></script>
+</head>
+
+<body>
+<h1>Отбор Квартир</h1>
 <p>Find me in app/views/static_pages/help.html.erb</p>
+
+
+
+
+<body >
+<span style="display:inline-block">
+<h3 style="margin:0 0 15px; text-align:center">Отбор  квартир</h3>
+<form method="post" id="main_filter_form" onsubmit="save_metro_filters(); save_street_filter()" >
+<table>
+<tr valign="top"><td>
+			<div style="margin:-25px 0 5px"><input type="submit" value="Искать" /></div>
+		<table class="bordered">
+		<tr>
+			<td><b>Квартиры искать, в <span class="help print-hide" title="Вы можете отобрать только «собственников», только «контрагентов», или всех вместе. Выбирая «контрагентов», вводите более точные данные.">?</span></td>
+			<td>
+			<span style="display:inline-block; vertical-align:top">
+									<div style="padding:0">
+						<input type="checkbox" name="where_search[]" value="owners" checked id="where_search_owners" /><label for="where_search_owners"> Собственники</label>
+					</div>
+											<select name="add_user_id[]" multiple="true" style="margin:5px 0 5px 4px">
+							<option value="-1" selected>наша бд</option>
+																<option value="12" selected>avito</option>
+																		<option value="534" selected>mail.ru_mak</option>
+																		<option value="15" selected>posrednikovzdesnet</option>
+																		<option value="8" selected>pyxi</option>
+																		<option value="20" selected>smr77</option>
+																		<option value="14" selected>zhivem</option>
+																		<option value="1119" selected>вопрос30</option>
+																		<option value="13" selected>из рук</option>
+																		<option value="409" selected>пок10</option>
+																		<option value="410" selected>пок11</option>
+																		<option value="1376" selected>пок14</option>
+																		<option value="9" selected>пок2</option>
+																		<option value="10" selected>пок3</option>
+																		<option value="11" selected>пок4</option>
+																		<option value="58" selected>пок5</option>
+																		<option value="103" selected>пок6</option>
+																		<option value="151" selected>пок7</option>
+																		<option value="152" selected>пок8</option>
+																		<option value="369" selected>пок9</option>
+															</select>
+																			<div style="padding:0">
+						<input type="checkbox" name="where_search[]" value="cian"  id="where_search_cian" /><label for="where_search_cian"> <b>Контрагенты</b></label>
+					</div>
+							</span>
+			<span style="display:inline-block; vertical-align:top; margin-left:20px">
+															<div style="padding:0 0 7px">
+							<input type="checkbox" name="search_archive" value="1"  id="search_archive" /> <label for="search_archive"><b>архив</b></label>
+						</div>
+																					<div style="padding:0 0 7px">
+							<input type="checkbox" name="search_archive_acts" value="21"  id="search_archive_acts" /> <label for="search_archive_acts"><b>архив акты</b></label>
+						</div>
+																<div style="padding:0 0 7px">
+							<input type="checkbox" name="search_error" value="1"  id="search_error" /> <label for="search_error"><b>ошибки</b></label>
+						</div>
+						<div style="padding:0 0 7px">
+							<input type="checkbox" name="search_agent" value="1"  id="search_agent" /> <label for="search_agent"><b>агенты</b></label>
+						</div>
+												</span>
+			</td>
+		</tr>
+					<tr>
+				<td><b>Искать собственников<br/>с конкуренцией</b></td>
+				<td>
+					от <input type="text" name="competitor_count_min" value="" style="width:20px" />
+					до <input type="text" name="competitor_count_max" value="" style="width:20px" />
+				</td>
+			</tr>
+							<tr>
+					<td><b>Показать квартиры<br/>у менеджера</b> <span class="help print-hide" title="Здесь вы можете выбрать квартиры у сотрудников с нужным статусом. Для подтверждения данного статуса вы должны его подтвердить, только в этом случае ненужные квартиры у всего вашего отдела переместятся в «сдано, ошибка, это агент»">?</span></td>
+					<td>
+						<select name="manager_id">
+							<option value=""></option>
+																<option value="2">Белла</option>
+																		<option value="1095">УмидК</option>
+																		<option value="1258">Нисо</option>
+																		<option value="1077">Вносим акты</option>
+																		<option value="1049">Александр</option>
+																		<option value="1139">Римма</option>
+																		<option value="1426">ЕвгенияА</option>
+																		<option value="1130">Даурова</option>
+																		<option value="1478">Кристина</option>
+																		<option value="1533">Ирина</option>
+																		<option value="1558">test</option>
+															</select>
+						<input type="checkbox" name="manager_flats[]" value="my"  /> мои квартиры
+						<div style="padding:5px 0 0">
+															<input type="checkbox" name="manager_flats[]" value="agent"  /> это агент &nbsp;
+																<input type="checkbox" name="manager_flats[]" value="error"  /> ошибка &nbsp;
+																<input type="checkbox" name="manager_flats[]" value="done"  /> сдано &nbsp;
+														</div>
+					</td>
+				</tr>
+							<tr>
+			<td><b>Количество комнат</b></td>
+			<td>
+									<input type="checkbox" name="room_count[]" value="1"  />1&nbsp;					<input type="checkbox" name="room_count[]" value="2"  />2&nbsp;					<input type="checkbox" name="room_count[]" value="3"  />3&nbsp;					<input type="checkbox" name="room_count[]" value="4"  />4(+)&nbsp;					<input type="checkbox" name="room_count[]" value="0"  />Комната&nbsp;			</td>
+		</tr>
+		<tr>
+			<td><b>Цена</b></td>
+			<td>
+				от <input type="text" name="price_min" value="" style="width:60px" />
+				до <input type="text" name="price_max" value="" style="width:60px" />
+				<span class="help print-hide" title="Введите минимальную и максимальную стоимость квартир. Например клиент готов платить за квартиру 35000 рублей. Введите минимальную 30000, а максимальную 40000, вдруг собственники поторгуются или клиент поднимется в цене.">?</span>
+			</td>
+		</tr>
+		<tr>
+			<td><b>Искать за последние</b> <span class="help print-hide" title="Здесь вы можете выбрать квартиры у сотрудников с нужным статусом. Для подтверждения данного статуса вы должны его подтвердить, только в этом случае ненужные квартиры у всего вашего отдела переместятся в «сдано, ошибка, это агент»">?</span></td>
+			<td>
+				<input name="add_days" value="" style="width:20px" /> дней
+			</td>
+		</tr>
+		<tr>
+			<td><b>Дата создания</b></td>
+			<td>
+				с <input name="add_date_from" value="" class="datepicker" style="width:80px" />
+				по <input name="add_date_to" value="" class="datepicker" style="width:80px" />
+			</td>
+		</tr>
+		<tr>
+			<td><b>Москва/МО</b> <span class="help print-hide" title="Выберите нужное вам - «Москву», «Подмосковье», но знайте, что интересная вам квартира, может быть в «Не определена станция метро»">?</span></td>
+			<td>
+				<div>
+					<input type="checkbox" name="moscow_mo[]" value="moscow" checked /> Москва
+					<input type="checkbox" name="moscow_mo[]" value="mo"  /> Подмосковье
+				</div>
+				<div>
+					<input type="checkbox" name="metro_unknown" value="1"  /> Не определена станция метро
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td><b>Улица</b> <span class="help print-hide" title="Поиск по улице">?</span></td>
+			<td>
+				<script type="text/javascript" src="/flats/js/cian_street.js"></script>
+				<span id="city_search">
+					<div style="padding:0 0 5px">введите несколько букв названия улицы:</div>
+					<input name="street_0" id="street" style="width:200px" />
+					<input type="button" value="Найти" onclick="$('#Streets').load('/parser/show_street.php', { 'street': $('#street').val() } );">
+					<div id="Streets"></div>
+					<div id="multi_street"></div>
+				</span>
+				<input type="hidden" name="multi_street_html" id="multi_street_html" value="" />
+			</td>
+		</tr>
+		<tr>
+			<td><b>До метро</b></td>
+			<td>
+				от <input type="text" name="to_metro_minutes_min" value="" style="width:20px" />
+				до <input type="text" name="to_metro_minutes_max" value="" style="width:20px" />
+				минут
+				<select name="to_metro_type">
+					<option value="-1" selected></option>
+					<option value="0">пешком</option>
+					<option value="1">транспортом</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td><b>В объявлении</b> <span onclick="expand_block('in_ad', this)" style="cursor:pointer">[+]</span></td>
+			<td>
+				<div id="in_ad" style="display:none">
+				<table class="no-bordered" style="margin:0 0 0 -7px">
+				<tr>
+					<td><b>мебель </b></td>
+					<td>
+						<input type="radio" name="have_furniture" value=1> есть,
+						<input type="radio" name="have_furniture" value=0 checked> не важно,
+						<input type="radio" name="have_furniture" value=-1> нет
+					</td>
+				</tr>
+				<tr>
+					<td><b>телефон </b></td>
+					<td>
+						<input type="radio" name="have_phone" value=1> есть,
+						<input type="radio" name="have_phone" value=0 checked> не важно,
+						<input type="radio" name="have_phone" value=-1> нет
+					</td>
+				</tr>
+				<tr>
+					<td><b>холодильник </b></td>
+					<td>
+						<input type="radio" name="have_fridge" value=1> есть,
+						<input type="radio" name="have_fridge" value=0 checked> не важно,
+						<input type="radio" name="have_fridge" value=-1> нет
+					</td>
+				</tr>
+				<tr>
+					<td><b>телевизор </b></td>
+					<td>
+						<input type="radio" name="have_tv" value=1> есть,
+						<input type="radio" name="have_tv" value=0 checked> не важно,
+						<input type="radio" name="have_tv" value=-1> нет
+					</td>
+				</tr>
+				<tr>
+					<td><b>стир.машина </b></td>
+					<td>
+						<input type="radio" name="have_washer" value=1> есть,
+						<input type="radio" name="have_washer" value=0 checked> не важно,
+						<input type="radio" name="have_washer" value=-1> нет
+					</td>
+				</tr>
+				</table>
+				<div style="padding:3px 0">
+					<b>наличие балкона</b> <input type="checkbox" name="have_balcony" value=1>
+					<b>наличие фото</b> <input type="checkbox" title="Отобрать объявления с фотографиями" name="have_photo" value="1">
+				</div>
+				<div style="padding:3px 0">
+					<b>возьмут с животным</b> <input type="checkbox" name="allow_pets" value=1>
+					<b>возьмут с детьми</b> <input type="checkbox" name="allow_kids" value=1>
+				</div>
+				<div style="padding:3px 0">
+					<b>эксклюзивы</b><input type="checkbox" name="is_exclusive" value="1">
+				</div>
+				<div style="padding:3px 0">
+					<b>агентам не звонить</b>
+					<input type="radio" name="allow_agent" value=1>да
+					<input type="radio" name="allow_agent" value=0 checked>не важно
+					<input type="radio" name="allow_agent" value=-1> нет
+				</div>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td><b>Метраж</b> <span onclick="expand_block('square_block', this)" style="cursor:pointer">[+]</span></td>
+			<td>
+				<div id="square_block" style="display:none">
+				<table class="no-bordered" style="margin:0 0 0 -7px">
+				<tr>
+					<td><b>кухня </b></td>
+					<td>
+						от <input name="square_kitchen_min" style="width:30px" value=""> м<sup>2</sup>
+						до <input name="square_kitchen_max" style="width:30px" value=""> м<sup>2</sup>
+					</td>
+				</tr>
+				<tr>
+					<td><b>жилая </b></td>
+					<td>
+						от <input name="square_live_min" style="width:30px" value=""> м<sup>2</sup>
+						до <input name="square_live_max" style="width:30px" value=""> м<sup>2</sup>
+					</td>
+				</tr>
+				<tr>
+					<td><b>общая </b></td>
+					<td>
+						от <input name="square_total_min" style="width:30px" value=""> м<sup>2</sup>
+						до <input name="square_total_max" style="width:30px" value=""> м<sup>2</sup>
+					</td>
+				</tr>
+				</table>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td><b>Этажность</b> <span onclick="expand_block('floor_block', this)" style="cursor:pointer">[+]</span></td>
+			<td>
+				<div id="floor_block" style="display:none">
+					<div style="padding:0 0 5px">
+						<b>этаж :</b>
+						от <input name="floor_num_from" size="2" value="">
+						до <input name="floor_num_to" size="2" value="">
+						<input type="checkbox" name="floor_no_last" value="1">не последний
+					</div>
+					<div>
+						<b>этажей :</b>
+						от <input name="floor_max_from" size="2" value="">
+						до <input name="floor_max_to" size="2" value="">
+					</div>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td><b>Поиск по номеру телефона</b></td>
+			<td>
+				<input name="search_phone" style="width:100px" value="" maxlength="10" /> <span class="help print-hide" title="Вы можете найти все объявления по введенному вами номеру телефона.">?</span> (10 цифр номера)
+			</td>
+		</tr>
+		<tr>
+			<td><b>Поиск в комментарии</b></td>
+			<td>
+				<div style="padding:0 0 5px">
+					наличие слова <input name="have_words" value="" style="width:200px" />
+				</div>
+				<div>
+					но исключить <input name="have_no_words" value="" style="width:200px; margin-left:7px" />
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td><b>Показать только новые<br/>квартиры, начиная с</b></td>
+			<td>
+				<input name="from_time" value="" class="datetimepicker" style="width:120px" /> <span class="help print-hide" title="Введите дату и время, с которого хотите увидеть только новые объекты.">?</span>
+			</td>
+		</tr>
+					</table>
+	<div style="padding:10px 0 0">
+		<input type="submit" value="Искать" />
+		<input type="button" value="Очистить все" onclick="filter_clear('main_filter_form')">
+	</div>
+
+</td><td>
+		<a href="#" onclick="return set_filter_tab('metro')" id="filter_tab_link_metro" class="tab-active">Схема метро</a> |
+	<a href="#" onclick="return set_filter_tab('map')" id="filter_tab_link_map" >Карта</a>
+
+	<div id="filter_tab_map" style="width:610px; display:none">
+		<link rel="stylesheet" type="text/css" href="/flats/css/map_draw.css" media="all"/>
+<script type="text/javascript" src="/flats/js/map_utils.js"></script>
+<script type="text/javascript" src="/flats/js/map_manager.js"></script>
+<script type="text/javascript" src="/flats/js/map_draw.js"></script>
+<script type="text/javascript" src="/flats/js/map_gdouglaspeuker.js"></script>
+
+<div class="ymapbox ex_location_type" rel="location_map" style="display: none;margin-top: 10px;">
+    <div id="map" class="map_container">
+        <div class="map_preloader_container">
+            <div class="map_preloader"></div>
+        </div>
+        <canvas id="drawing-area" width="" height="600"></canvas>
+        <div id="YMapsID" style="width: 100%;height:600px;"></div>
+        <div id="hint">Начните рисовать участки или выберите один из районов</div>
+        <div class="map_info">
+            <div class="map_info_title">Методы выделения</div>
+            <div class="map_info_list_draw_actions">
+                <ul>
+                    <li id="draw_poly_action" rel="&nbsp; &nbsp; Полигон"></li>
+                    <li id="draw_shape_action" rel="&nbsp; &nbsp; Замкнутая линия"></li>
+                    <li id="draw_circle_action" rel="&nbsp; &nbsp; Круг"></li>
+                </ul>
+            </div>
+            <div class="map_info_list_districts" style="display: none;">
+                <ul>
+                    <li></li>
+                </ul>
+            </div>
+            <div class="map_info_clear">
+                <ul>
+                    <li><i></i><span>Очистить все</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+      var incoming_polygons = [], incoming_distance = [];
+    </script>
+    <div id="drawn_geometry">
+        <div id="drawn_geometry_polygons"></div>
+        <div id="drawn_geometry_shapes"></div>
+        <div id="drawn_geometry_circles"></div>
+        <div id="drawn_geometry_districts"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+  var my_map_shown = false;
+  function UpdateClearButton() {
+    var count = gCollection.getLength();
+    if (count > 0)
+      $('.map_info_clear ul li').find('span').html('Очистить все (' + count + ')');
+    else {
+      $('.map_info_clear ul li').find('span').html('Очистить все');
+      Hint('Начните рисовать участки или выберите один из районов');
+    }
+  }
+</script>	</div>
+		<div id="filter_tab_metro" style="display:block">
+		<script type="text/javascript">
+      var metro_arr = {"1076":{"x":"0","y":"0"},"1042":{"x":"0","y":"0"},"1326":{"x":"0","y":"0"},"1313":{"x":"0","y":"0"},"1236":{"x":"0","y":"0"},"1238":{"x":"0","y":"0"},"1138":{"x":"0","y":"0"},"1222":{"x":"0","y":"0"},"1269":{"x":"0","y":"0"},"1204":{"x":"0","y":"0"},"1225":{"x":"0","y":"0"},"1196":{"x":"0","y":"0"},"1231":{"x":"0","y":"0"},"1129":{"x":"0","y":"0"},"1117":{"x":"0","y":"0"},"1251":{"x":"0","y":"0"},"1291":{"x":"0","y":"0"},"1240":{"x":"0","y":"0"},"1113":{"x":"0","y":"0"},"1234":{"x":"0","y":"0"},"1128":{"x":"0","y":"0"},"1134":{"x":"0","y":"0"},"1233":{"x":"0","y":"0"},"1205":{"x":"0","y":"0"},"1260":{"x":"0","y":"0"},"1259":{"x":"0","y":"0"},"1224":{"x":"0","y":"0"},"1242":{"x":"0","y":"0"},"1227":{"x":"0","y":"0"},"1199":{"x":"0","y":"0"},"1249":{"x":"0","y":"0"},"1122":{"x":"0","y":"0"},"1244":{"x":"0","y":"0"},"1295":{"x":"0","y":"0"},"1301":{"x":"0","y":"0"},"1132":{"x":"0","y":"0"},"1059":{"x":"0","y":"0"},"1195":{"x":"0","y":"0"},"1147":{"x":"0","y":"0"},"1161":{"x":"0","y":"0"},"1263":{"x":"0","y":"0"},"1115":{"x":"0","y":"0"},"1298":{"x":"0","y":"0"},"1261":{"x":"0","y":"0"},"1262":{"x":"0","y":"0"},"1256":{"x":"0","y":"0"},"1241":{"x":"0","y":"0"},"1202":{"x":"0","y":"0"},"1252":{"x":"0","y":"0"},"1289":{"x":"0","y":"0"},"1248":{"x":"0","y":"0"},"1198":{"x":"0","y":"0"},"1112":{"x":"0","y":"0"},"1119":{"x":"0","y":"0"},"1265":{"x":"0","y":"0"},"1292":{"x":"0","y":"0"},"1118":{"x":"0","y":"0"},"1124":{"x":"0","y":"0"},"1130":{"x":"0","y":"0"},"1136":{"x":"0","y":"0"},"1200":{"x":"0","y":"0"},"1228":{"x":"0","y":"0"},"1257":{"x":"0","y":"0"},"1226":{"x":"0","y":"0"},"1254":{"x":"0","y":"0"},"1125":{"x":"0","y":"0"},"1127":{"x":"0","y":"0"},"1120":{"x":"0","y":"0"},"1299":{"x":"0","y":"0"},"1123":{"x":"0","y":"0"},"1253":{"x":"0","y":"0"},"1245":{"x":"0","y":"0"},"1126":{"x":"0","y":"0"},"1232":{"x":"0","y":"0"},"1203":{"x":"0","y":"0"},"1235":{"x":"0","y":"0"},"1133":{"x":"0","y":"0"},"1230":{"x":"0","y":"0"},"1286":{"x":"0","y":"0"},"1255":{"x":"0","y":"0"},"1201":{"x":"0","y":"0"},"1288":{"x":"0","y":"0"},"1267":{"x":"0","y":"0"},"1131":{"x":"0","y":"0"},"1206":{"x":"0","y":"0"},"1293":{"x":"0","y":"0"},"1139":{"x":"0","y":"0"},"1290":{"x":"0","y":"0"},"1250":{"x":"0","y":"0"},"1109":{"x":"0","y":"0"},"1247":{"x":"0","y":"0"},"1297":{"x":"0","y":"0"},"1300":{"x":"0","y":"0"},"1229":{"x":"0","y":"0"},"1114":{"x":"0","y":"0"},"1243":{"x":"0","y":"0"},"1294":{"x":"0","y":"0"},"1266":{"x":"0","y":"0"},"1296":{"x":"0","y":"0"},"1197":{"x":"0","y":"0"},"1237":{"x":"0","y":"0"},"1221":{"x":"0","y":"0"},"1239":{"x":"0","y":"0"},"1287":{"x":"0","y":"0"},"1111":{"x":"0","y":"0"},"1121":{"x":"0","y":"0"},"1223":{"x":"0","y":"0"},"1110":{"x":"0","y":"0"},"1140":{"x":"0","y":"0"},"1258":{"x":"0","y":"0"},"1116":{"x":"0","y":"0"},"1264":{"x":"0","y":"0"},"1268":{"x":"0","y":"0"},"1135":{"x":"0","y":"0"},"1137":{"x":"0","y":"0"},"1246":{"x":"0","y":"0"},"1348":{"x":"0","y":"0"},"85":{"x":"512","y":"313"},"1340":{"x":"0","y":"0"},"13":{"x":"393","y":"494"},"97":{"x":"194","y":"588"},"1214":{"x":"0","y":"0"},"53":{"x":"226","y":"412"},"105":{"x":"393","y":"113"},"213":{"x":"393","y":"691"},"1024":{"x":"0","y":"0"},"135":{"x":"319","y":"63"},"1089":{"x":"0","y":"0"},"1327":{"x":"0","y":"0"},"156":{"x":"293","y":"668"},"1271":{"x":"0","y":"0"},"1160":{"x":"0","y":"0"},"50":{"x":"210","y":"396"},"1178":{"x":"0","y":"0"},"1350":{"x":"0","y":"0"},"1043":{"x":"0","y":"0"},"5":{"x":"194","y":"103"},"109":{"x":"393","y":"73"},"57":{"x":"55","y":"300"},"1035":{"x":"0","y":"0"},"1143":{"x":"0","y":"0"},"1194":{"x":"0","y":"0"},"71":{"x":"182","y":"263"},"47":{"x":"512","y":"232"},"69":{"x":"179","y":"202"},"1184":{"x":"0","y":"0"},"1210":{"x":"0","y":"0"},"1333":{"x":"0","y":"0"},"7":{"x":"228","y":"242"},"93":{"x":"194","y":"628"},"1093":{"x":"0","y":"0"},"131":{"x":"319","y":"73"},"1278":{"x":"0","y":"0"},"30":{"x":"238","y":"411"},"217":{"x":"293","y":"731"},"1180":{"x":"0","y":"0"},"207":{"x":"410","y":"648"},"120":{"x":"244","y":"422"},"1279":{"x":"0","y":"0"},"107":{"x":"393","y":"93"},"1151":{"x":"0","y":"0"},"145":{"x":"410","y":"628"},"1083":{"x":"0","y":"0"},"193":{"x":"293","y":"751"},"164":{"x":"293","y":"700"},"1016":{"x":"493","y":"63"},"195":{"x":"293","y":"772"},"1031":{"x":"0","y":"0"},"16":{"x":"368","y":"540"},"1088":{"x":"0","y":"0"},"1310":{"x":"0","y":"0"},"106":{"x":"393","y":"103"},"1064":{"x":"0","y":"0"},"112":{"x":"319","y":"93"},"1152":{"x":"0","y":"0"},"2":{"x":"194","y":"73"},"1157":{"x":"0","y":"0"},"3":{"x":"194","y":"83"},"1103":{"x":"0","y":"0"},"1054":{"x":"0","y":"0"},"77":{"x":"493","y":"628"},"142":{"x":"410","y":"608"},"1068":{"x":"0","y":"0"},"203":{"x":"20","y":"201"},"1211":{"x":"0","y":"0"},"1309":{"x":"0","y":"0"},"157":{"x":"90","y":"628"},"1021":{"x":"0","y":"0"},"1191":{"x":"0","y":"0"},"1280":{"x":"0","y":"0"},"198":{"x":"131","y":"351"},"1003":{"x":"0","y":"0"},"1050":{"x":"0","y":"0"},"81":{"x":"493","y":"668"},"1316":{"x":"0","y":"0"},"1065":{"x":"0","y":"0"},"1084":{"x":"0","y":"0"},"1276":{"x":"0","y":"0"},"1322":{"x":"0","y":"0"},"1104":{"x":"0","y":"0"},"1099":{"x":"0","y":"0"},"1321":{"x":"0","y":"0"},"1074":{"x":"0","y":"0"},"1193":{"x":"0","y":"0"},"1285":{"x":"0","y":"0"},"1155":{"x":"0","y":"0"},"6":{"x":"194","y":"113"},"1090":{"x":"0","y":"0"},"115":{"x":"268","y":"182"},"132":{"x":"293","y":"490"},"1023":{"x":"0","y":"0"},"1163":{"x":"0","y":"0"},"21":{"x":"393","y":"658"},"205":{"x":"319","y":"192"},"140":{"x":"410","y":"578"},"1098":{"x":"0","y":"0"},"1343":{"x":"0","y":"0"},"1012":{"x":"0","y":"0"},"1071":{"x":"0","y":"0"},"216":{"x":"493","y":"688"},"1374":{"x":"0","y":"0"},"1218":{"x":"0","y":"0"},"1082":{"x":"0","y":"0"},"1320":{"x":"0","y":"0"},"1172":{"x":"0","y":"0"},"209":{"x":"405","y":"673"},"1078":{"x":"0","y":"0"},"1060":{"x":"0","y":"0"},"1146":{"x":"0","y":"0"},"43":{"x":"512","y":"192"},"1215":{"x":"0","y":"0"},"1080":{"x":"0","y":"0"},"1188":{"x":"0","y":"0"},"94":{"x":"194","y":"618"},"1092":{"x":"0","y":"0"},"1150":{"x":"0","y":"0"},"18":{"x":"393","y":"628"},"1148":{"x":"0","y":"0"},"1159":{"x":"0","y":"0"},"1335":{"x":"0","y":"0"},"17":{"x":"305","y":"597"},"15":{"x":"393","y":"516"},"1341":{"x":"0","y":"0"},"52":{"x":"161","y":"380"},"1166":{"x":"0","y":"0"},"1328":{"x":"0","y":"0"},"74":{"x":"357","y":"352"},"1334":{"x":"0","y":"0"},"144":{"x":"410","y":"587"},"1308":{"x":"0","y":"0"},"14":{"x":"393","y":"504"},"1069":{"x":"0","y":"0"},"1213":{"x":"0","y":"0"},"1312":{"x":"0","y":"0"},"1330":{"x":"0","y":"0"},"35":{"x":"389","y":"262"},"92":{"x":"194","y":"638"},"1324":{"x":"0","y":"0"},"1025":{"x":"0","y":"0"},"1034":{"x":"0","y":"0"},"1041":{"x":"493","y":"698"},"1302":{"x":"0","y":"0"},"1105":{"x":"0","y":"0"},"1106":{"x":"0","y":"0"},"1272":{"x":"0","y":"0"},"22":{"x":"393","y":"674"},"1019":{"x":"0","y":"0"},"1100":{"x":"0","y":"0"},"133":{"x":"190","y":"271"},"36":{"x":"493","y":"102"},"1075":{"x":"0","y":"0"},"34":{"x":"375","y":"276"},"139":{"x":"459","y":"442"},"29":{"x":"213","y":"438"},"62":{"x":"20","y":"231"},"73":{"x":"320","y":"315"},"79":{"x":"493","y":"648"},"1164":{"x":"0","y":"0"},"60":{"x":"20","y":"265"},"1040":{"x":"0","y":"0"},"48":{"x":"424","y":"320"},"55":{"x":"75","y":"320"},"1207":{"x":"0","y":"0"},"98":{"x":"194","y":"578"},"215":{"x":"493","y":"678"},"1185":{"x":"0","y":"0"},"1095":{"x":"0","y":"0"},"1037":{"x":"293","y":"723"},"1049":{"x":"0","y":"0"},"1337":{"x":"0","y":"0"},"32":{"x":"328","y":"323"},"1047":{"x":"0","y":"0"},"1186":{"x":"0","y":"0"},"1026":{"x":"0","y":"0"},"143":{"x":"410","y":"617"},"1066":{"x":"0","y":"0"},"1051":{"x":"0","y":"0"},"1329":{"x":"0","y":"0"},"1067":{"x":"0","y":"0"},"87":{"x":"421","y":"400"},"204":{"x":"319","y":"182"},"146":{"x":"410","y":"638"},"1044":{"x":"0","y":"0"},"8":{"x":"232","y":"268"},"1153":{"x":"0","y":"0"},"110":{"x":"393","y":"63"},"197":{"x":"131","y":"341"},"117":{"x":"268","y":"215"},"196":{"x":"20","y":"190"},"1347":{"x":"0","y":"0"},"61":{"x":"20","y":"240"},"1311":{"x":"0","y":"0"},"1061":{"x":"0","y":"0"},"1013":{"x":"0","y":"0"},"1028":{"x":"0","y":"0"},"202":{"x":"20","y":"211"},"1189":{"x":"0","y":"0"},"124":{"x":"293","y":"561"},"125":{"x":"293","y":"571"},"1209":{"x":"0","y":"0"},"1032":{"x":"0","y":"0"},"126":{"x":"293","y":"581"},"1274":{"x":"0","y":"0"},"1319":{"x":"0","y":"0"},"1349":{"x":"0","y":"0"},"1168":{"x":"0","y":"0"},"1281":{"x":"0","y":"0"},"1344":{"x":"0","y":"0"},"1175":{"x":"0","y":"0"},"1048":{"x":"0","y":"0"},"82":{"x":"512","y":"281"},"210":{"x":"512","y":"272"},"11":{"x":"336","y":"402"},"134":{"x":"268","y":"227"},"89":{"x":"194","y":"670"},"95":{"x":"194","y":"608"},"1145":{"x":"0","y":"0"},"1167":{"x":"0","y":"0"},"1018":{"x":"0","y":"0"},"1174":{"x":"0","y":"0"},"1107":{"x":"0","y":"0"},"100":{"x":"244","y":"482"},"67":{"x":"179","y":"182"},"1282":{"x":"0","y":"0"},"1086":{"x":"0","y":"0"},"1192":{"x":"0","y":"0"},"20":{"x":"393","y":"648"},"1156":{"x":"0","y":"0"},"111":{"x":"319","y":"83"},"31":{"x":"292","y":"359"},"12":{"x":"387","y":"454"},"1070":{"x":"0","y":"0"},"28":{"x":"199","y":"452"},"165":{"x":"108","y":"379"},"44":{"x":"512","y":"202"},"1096":{"x":"0","y":"0"},"42":{"x":"512","y":"182"},"1182":{"x":"0","y":"0"},"83":{"x":"512","y":"292"},"1154":{"x":"0","y":"0"},"1033":{"x":"0","y":"0"},"113":{"x":"293","y":"133"},"1332":{"x":"0","y":"0"},"141":{"x":"410","y":"598"},"59":{"x":"35","y":"280"},"63":{"x":"179","y":"142"},"86":{"x":"459","y":"365"},"1063":{"x":"0","y":"0"},"1338":{"x":"0","y":"0"},"49":{"x":"310","y":"377"},"1144":{"x":"0","y":"0"},"1015":{"x":"0","y":"0"},"68":{"x":"179","y":"192"},"121":{"x":"293","y":"472"},"130":{"x":"293","y":"648"},"38":{"x":"493","y":"83"},"1323":{"x":"0","y":"0"},"1085":{"x":"0","y":"0"},"1372":{"x":"0","y":"0"},"76":{"x":"459","y":"454"},"1284":{"x":"0","y":"0"},"1087":{"x":"0","y":"0"},"24":{"x":"90","y":"648"},"136":{"x":"356","y":"237"},"1079":{"x":"0","y":"0"},"96":{"x":"194","y":"598"},"1020":{"x":"0","y":"0"},"72":{"x":"226","y":"306"},"1005":{"x":"0","y":"0"},"214":{"x":"20","y":"181"},"1277":{"x":"0","y":"0"},"1190":{"x":"0","y":"0"},"1077":{"x":"0","y":"0"},"1030":{"x":"0","y":"0"},"1":{"x":"194","y":"63"},"104":{"x":"393","y":"123"},"138":{"x":"459","y":"377"},"1046":{"x":"0","y":"0"},"1220":{"x":"0","y":"0"},"1303":{"x":"90","y":"678"},"1371":{"x":"0","y":"0"},"80":{"x":"493","y":"658"},"116":{"x":"268","y":"192"},"1345":{"x":"0","y":"0"},"1055":{"x":"0","y":"0"},"1336":{"x":"0","y":"0"},"108":{"x":"393","y":"83"},"1342":{"x":"0","y":"0"},"127":{"x":"293","y":"597"},"1354":{"x":"0","y":"0"},"1029":{"x":"0","y":"0"},"45":{"x":"512","y":"212"},"1057":{"x":"0","y":"0"},"1170":{"x":"0","y":"0"},"1187":{"x":"0","y":"0"},"122":{"x":"293","y":"502"},"201":{"x":"66","y":"336"},"51":{"x":"195","y":"381"},"4":{"x":"194","y":"93"},"37":{"x":"493","y":"93"},"1081":{"x":"0","y":"0"},"1183":{"x":"0","y":"0"},"1179":{"x":"0","y":"0"},"1212":{"x":"0","y":"0"},"1072":{"x":"0","y":"0"},"1173":{"x":"0","y":"0"},"26":{"x":"90","y":"618"},"206":{"x":"366","y":"299"},"1270":{"x":"0","y":"0"},"1370":{"x":"0","y":"0"},"1365":{"x":"0","y":"0"},"1359":{"x":"0","y":"0"},"1361":{"x":"0","y":"0"},"1314":{"x":"0","y":"0"},"1363":{"x":"0","y":"0"},"1367":{"x":"0","y":"0"},"1356":{"x":"0","y":"0"},"1357":{"x":"0","y":"0"},"1355":{"x":"0","y":"0"},"1362":{"x":"0","y":"0"},"1369":{"x":"0","y":"0"},"1364":{"x":"0","y":"0"},"1366":{"x":"0","y":"0"},"1358":{"x":"0","y":"0"},"1360":{"x":"0","y":"0"},"1036":{"x":"0","y":"0"},"1275":{"x":"0","y":"0"},"200":{"x":"20","y":"221"},"54":{"x":"85","y":"330"},"1062":{"x":"0","y":"0"},"102":{"x":"356","y":"268"},"1331":{"x":"0","y":"0"},"64":{"x":"179","y":"152"},"1171":{"x":"0","y":"0"},"75":{"x":"417","y":"412"},"1181":{"x":"0","y":"0"},"1027":{"x":"0","y":"0"},"9":{"x":"232","y":"296"},"10":{"x":"301","y":"368"},"1351":{"x":"0","y":"0"},"1352":{"x":"0","y":"0"},"78":{"x":"493","y":"638"},"1001":{"x":"0","y":"0"},"91":{"x":"194","y":"648"},"1283":{"x":"0","y":"0"},"1108":{"x":"0","y":"0"},"1325":{"x":"0","y":"0"},"114":{"x":"268","y":"172"},"1208":{"x":"0","y":"0"},"1053":{"x":"0","y":"0"},"88":{"x":"325","y":"402"},"1169":{"x":"0","y":"0"},"1101":{"x":"0","y":"0"},"1017":{"x":"90","y":"668"},"199":{"x":"300","y":"246"},"1052":{"x":"0","y":"0"},"123":{"x":"293","y":"551"},"103":{"x":"356","y":"306"},"65":{"x":"179","y":"162"},"1176":{"x":"0","y":"0"},"1304":{"x":"0","y":"0"},"1373":{"x":"0","y":"0"},"1097":{"x":"0","y":"0"},"1317":{"x":"0","y":"0"},"70":{"x":"179","y":"212"},"1002":{"x":"0","y":"0"},"155":{"x":"293","y":"658"},"194":{"x":"293","y":"762"},"1315":{"x":"0","y":"0"},"1306":{"x":"0","y":"0"},"1000":{"x":"0","y":"0"},"1162":{"x":"0","y":"0"},"40":{"x":"0","y":"0"},"211":{"x":"0","y":"0"},"192":{"x":"293","y":"742"},"212":{"x":"293","y":"712"},"1045":{"x":"0","y":"0"},"1022":{"x":"0","y":"0"},"1158":{"x":"0","y":"0"},"25":{"x":"90","y":"638"},"1141":{"x":"0","y":"0"},"58":{"x":"45","y":"290"},"56":{"x":"65","y":"310"},"1368":{"x":"0","y":"0"},"27":{"x":"90","y":"608"},"1102":{"x":"0","y":"0"},"1165":{"x":"0","y":"0"},"1014":{"x":"0","y":"0"},"1339":{"x":"0","y":"0"},"19":{"x":"393","y":"638"},"118":{"x":"288","y":"246"},"1307":{"x":"0","y":"0"},"1073":{"x":"0","y":"0"},"1058":{"x":"0","y":"0"},"39":{"x":"493","y":"73"},"1346":{"x":"0","y":"0"},"128":{"x":"293","y":"628"},"1091":{"x":"0","y":"0"},"119":{"x":"238","y":"306"},"33":{"x":"356","y":"294"},"137":{"x":"426","y":"332"},"1177":{"x":"0","y":"0"},"99":{"x":"194","y":"568"},"1305":{"x":"0","y":"0"},"1056":{"x":"0","y":"0"},"208":{"x":"410","y":"658"},"84":{"x":"512","y":"301"},"1039":{"x":"0","y":"0"},"41":{"x":"512","y":"172"},"1038":{"x":"0","y":"0"},"66":{"x":"179","y":"172"},"46":{"x":"512","y":"222"},"1318":{"x":"0","y":"0"},"1217":{"x":"0","y":"0"},"1094":{"x":"0","y":"0"},"1219":{"x":"0","y":"0"},"1149":{"x":"0","y":"0"},"1353":{"x":"0","y":"0"},"1273":{"x":"0","y":"0"},"23":{"x":"90","y":"658"},"129":{"x":"293","y":"638"},"1216":{"x":"0","y":"0"},"1142":{"x":"0","y":"0"},"90":{"x":"194","y":"658"}};
+      var metro_group_arr = {"0":{"x":54,"y":470,"metro_ids":[28,100,132,122,133,71,7,134,117,136,35,48,137,87,75,12,52,"1076","1042","1326","1313","1236","1238","1138","1222","1269","1204","1225","1196","1231","1129","1117","1251","1291","1240","1113","1234","1128","1134","1233","1205","1260","1259","1224","1242","1227","1199","1249","1122","1244","1295","1301","1132","1059","1195","1147","1161","1263","1115","1298","1261","1262","1256","1241","1202","1252","1289","1248","1198","1112","1119","1265","1292","1118","1124","1130","1136","1200","1228","1257","1226","1254","1125","1127","1120","1299","1123","1253","1245","1126","1232","1203","1235","1133","1230","1286","1255","1201","1288","1267","1131","1206","1293","1139","1290","1250","1109","1247","1297","1300","1229","1114","1243","1294","1266","1296","1197","1237","1221","1239","1287","1111","1121","1223","1110","1140","1258","1116","1264","1268","1135","1137","1246","1348","1340","1214","1024","1089","1327","1271","1160","1178","1350","1043","1035","1143","1194","1184","1210","1333","1093","1278","1180","1279","1151","1083","1031","1088","1310","1064","1152","1157","1103","1054","1068","1211","1309","1021","1191","1280","1050","1316","1065","1084","1276","1322","1104","1099","1321","1074","1193","1285","1155","1090","1023","1163","1098","1343","1012","1071","1374","1218","1082","1320","1172","1078","1060","1146","1215","1080","1188","1092","1150","1148","1159","1335","1341","1166","1328","1334","1308","1069","1213","1312","1330","1324","1025","1034","1302","1105","1106","1272","1019","1100","1075","1164","1040","1207","1185","1095","1049","1337","1047","1186","1026","1066","1051","1329","1067","1044","1153","1347","1311","1061","1013","1028","1189","1209","1032","1274","1319","1349","1168","1281","1344","1175","1048","1145","1167","1018","1174","1107","1282","1086","1192","1156","1070","1096","1182","1154","1033","1332","1063","1338","1144","1015","1323","1085","1372","1284","1087","1079","1020","1005","1277","1190","1077","1030","1046","1220","1371","1345","1055","1336","1342","1354","1029","1057","1170","1187","1081","1183","1179","1212","1072","1173","1270","1370","1365","1359","1361","1314","1363","1367","1356","1357","1355","1362","1369","1364","1366","1358","1360","1036","1275","1062","1331","1171","1181","1027","1351","1352","1283","1108","1325","1208","1053","1169","1101","1052","1176","1304","1373","1097","1317","1315","1306","1162","40","1045","1022","1158","1141","1368","1102","1165","1014","1339","1307","1073","1058","1346","1091","1177","1305","1056","1039","1038","1318","1217","1094","1219","1149","1353","1273","1216","1142"]},"-1":{"x":54,"y":502,"metro_ids":[165,198,197,54,70,6,116,104,36,47,86,138,76,13,123,99,27,205]},"-2":{"x":54,"y":518,"metro_ids":[201,55,69,5,115,105,37,46,85,139,77,14,124,98,26,204]},"-3":{"x":54,"y":534,"metro_ids":[56,68,4,114,106,38,45,84,140,78,15,125,97,157]},"-4":{"x":54,"y":550,"metro_ids":[57,67,3,113,107,39,44,83,144,79,18,126,96,25]},"6":{"metro_ids":["85","82","210","83","86","84"],"x":"512","y":"262"},"11":{"metro_ids":["13","213","21","18","15","14","22","20","19"],"x":"393","y":"701"},"17":{"metro_ids":["97","93","94","92","98","89","95","96","91","99","90"],"x":"194","y":"686"},"1":{"metro_ids":["53","50","71","7","30","120","132","52","74","35","133","34","29","73","48","32","87","8","117","11","134","100","31","12","28","49","121","136","72","122","51","206","102","75","9","10","88","199","103","118","119","33","137"],"x":"54","y":"486"},"16":{"metro_ids":["105","109","107","106","110","104","108"],"x":"393","y":"54"},"14":{"metro_ids":["135","131","112","115","111","113","116","114"],"x":"319","y":"53"},"15":{"metro_ids":["156","164","124","125","126","130","127","123","155","128","129"],"x":"293","y":"781"},"10":{"metro_ids":["5","2","3","6","1","4"],"x":"194","y":"54"},"7":{"metro_ids":["57","198","55","197","59","54","58","56"],"x":"0","y":"0"},"4":{"metro_ids":["47","43","44","42","45","41","46"],"x":"512","y":"162"},"12":{"metro_ids":["69","67","63","68","64","65","70","66"],"x":"179","y":"132"},"18":{"metro_ids":["217","193","195","1037","194","192","212"],"x":"0","y":"0"},"8":{"metro_ids":["207","145","142","140","209","144","139","143","146","141","138","208"],"x":"416","y":"683"},"2":{"metro_ids":["1016","36","38","37","39"],"x":"493","y":"54"},"20":{"metro_ids":["16","17"],"x":"0","y":"0"},"13":{"metro_ids":["77","81","216","1041","79","215","76","80","78"],"x":"493","y":"710"},"5":{"metro_ids":["203","62","60","196","61","202","165","214","201","200"],"x":"20","y":"171"},"3":{"metro_ids":["157","24","1303","26","1017","25","27","23"],"x":"90","y":"690"},"19":{"metro_ids":["1003","1001","1002","1000","211"],"x":"0","y":"0"},"9":{"metro_ids":["205","204"],"x":"0","y":"0"}};
+      var metro_ids_selected = ",";	// в формате ,36,132,15,
+      var mp_locked = false;
+      function mp(metro_id) {
+        if (mp_locked) return;
+        if (!metro_arr[metro_id]['img']) {
+          var img_i = document.createElement("img");
+          img_i.src = "/flats/img/pp.gif";
+          img_i.id = 'mp_'+metro_id;
+          img_i.className = 'map-point';
+          img_i.style.left = (metro_arr[metro_id]['x']-3) + 'px';
+          img_i.style.top = (metro_arr[metro_id]['y']-3) + 'px';
+          img_i.style.display = 'block';
+          img_i.onclick = function(){ mp(metro_id); };
+          document.getElementById('metromap').appendChild(img_i);
+          metro_arr[metro_id]['img'] = true;
+        }
+        var img_i = document.getElementById('mp_'+metro_id);
+        if (metro_ids_selected.indexOf(','+ metro_id +',') == -1) {
+          metro_ids_selected += metro_id +',';
+          img_i.style.display = 'block';
+        } else {
+          metro_ids_selected = metro_ids_selected.replace(','+ metro_id +',', ',');
+          img_i.style.display = 'none';
+        }
+      }
+      function mp_group(num) {
+        if (num <= 0) {
+          for (var n=0; n >= num; n--) {
+            for (var i=0; i < metro_group_arr[n]['metro_ids'].length; i++) {
+              mp(metro_group_arr[n]['metro_ids'][i]);
+            }
+          }
+        } else {
+          for (var i=0; i < metro_group_arr[num]['metro_ids'].length; i++) {
+            mp(metro_group_arr[num]['metro_ids'][i]);
+          }
+        }
+      }
+      function mp_clear() {
+        for (metro_id in metro_arr) {
+          if (metro_ids_selected.indexOf(','+ metro_id +',') != -1) {
+            metro_ids_selected = metro_ids_selected.replace(','+ metro_id +',', ',');
+            if (document.getElementById('mp_'+metro_id)) {
+              document.getElementById('mp_'+metro_id).style.display = 'none';
+            }
+          }
+        }
+      }
+      function save_metro_filters() {
+        var metro_ids_str = (metro_ids_selected == ',') ? '' : metro_ids_selected.substring(1,metro_ids_selected.length-1);
+        document.getElementsByName('metro')[0].value = metro_ids_str;
+      }
+      $(document).ready(function(){
+      });
+    </script>
+<div id="metromap" style="position:relative">
+		<img usemap="#map" src="/flats/img/metromap.gif" />
+</div>
+<map name="map">
+	<area shape="circle" coords="0,0,5" onclick="mp(1076)" title="1"><area shape="circle" coords="0,0,5" onclick="mp(1042)" title="2"><area shape="circle" coords="0,0,5" onclick="mp(1326)" title="3"><area shape="circle" coords="0,0,5" onclick="mp(1313)" title="9-й микрорайон"><area shape="circle" coords="0,0,5" onclick="mp(1236)" title="ÁÅÃÎÂÀß"><area shape="circle" coords="0,0,5" onclick="mp(1238)" title="ÁÀÁÓØÊÈÍÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1138)" title="ÁÀÃÐÀÒÈÎÍÎÂÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1222)" title="ÀÂÈÀÌÎÒÎÐÍÀß"><area shape="circle" coords="0,0,5" onclick="mp(1269)" title="ÄÅËÎÂÎÉ ÖÅÍÒÐ"><area shape="circle" coords="0,0,5" onclick="mp(1204)" title="ÁÅËßÅÂÎ"><area shape="circle" coords="0,0,5" onclick="mp(1225)" title="ÂÄÍÕ"><area shape="circle" coords="0,0,5" onclick="mp(1196)" title="ÁÀÓÌÀÍÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1231)" title="ÀÂÒÎÇÀÂÎÄÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1129)" title="ÂÅÐÍÀÄÑÊÎÃÎ ÏÐÎÑÏÅÊÒ"><area shape="circle" coords="0,0,5" onclick="mp(1117)" title="ÂÀÐØÀÂÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1251)" title="ÀÊÀÄÅÌÈ×ÅÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1291)" title="ÂËÀÄÛÊÈÍÎ"><area shape="circle" coords="0,0,5" onclick="mp(1240)" title="ÀËÅÊÑÅÅÂÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1113)" title="ÁÈÁÈÐÅÂÎ"><area shape="circle" coords="0,0,5" onclick="mp(1234)" title="ÀËÌÀ-ÀÒÈÍÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1128)" title="ÀËÒÓÔÜÅÂÎ"><area shape="circle" coords="0,0,5" onclick="mp(1134)" title="ÂÎÄÍÛÉ ÑÒÀÄÈÎÍ"><area shape="circle" coords="0,0,5" onclick="mp(1233)" title="ÂÎÉÊÎÂÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1205)" title="ÂÎËÎÊÎËÀÌÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1260)" title="ÄÌÈÒÐÎÂÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1259)" title="ÂÎËÆÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1224)" title="ÄÎÌÎÄÅÄÎÂÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1242)" title="ÁÎÒÀÍÈ×ÅÑÊÈÉ ÑÀÄ"><area shape="circle" coords="0,0,5" onclick="mp(1227)" title="ÁÎÐÈÑÎÂÎ"><area shape="circle" coords="0,0,5" onclick="mp(1199)" title="ÄÓÁÐÎÂÊÀ"><area shape="circle" coords="0,0,5" onclick="mp(1249)" title="ÁÓËÜÂÀÐ ÄÌÈÒÐÈß ÄÎÍÑÊÎÃÎ"><area shape="circle" coords="0,0,5" onclick="mp(1122)" title="ÁÓÍÈÍÑÊÀß ÀËËÅß"><area shape="circle" coords="0,0,5" onclick="mp(1244)" title="ÂÛÕÈÍÎ"><area shape="circle" coords="0,0,5" onclick="mp(1295)" title="ÀÝÐÎÏÎÐÒ"><area shape="circle" coords="0,0,5" onclick="mp(1301)" title="ÀÐÁÀÒÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1132)" title="ÁÐÀÒÈÑËÀÂÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1059)" title="belaya dacha"><area shape="circle" coords="0,0,5" onclick="mp(1195)" title="ÇßÁËÈÊÎÂÎ"><area shape="circle" coords="0,0,5" onclick="mp(1147)" title="Cкобелевская улица"><area shape="circle" coords="0,0,5" onclick="mp(1161)" title="Cокольники"><area shape="circle" coords="0,0,5" onclick="mp(1263)" title="ÊÀËÓÆÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1115)" title="ÊÀÍÒÅÌÈÐÎÂÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1298)" title="ÊÀÕÎÂÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1261)" title="ËÅÐÌÎÍÒÎÂÑÊÈÉ ÏÐÎÑÏÅÊÒ"><area shape="circle" coords="0,0,5" onclick="mp(1262)" title="ÊÀØÈÐÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1256)" title="ÊÎËÎÌÅÍÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1241)" title="ÊÎÍÜÊÎÂÎ"><area shape="circle" coords="0,0,5" onclick="mp(1202)" title="ÊÓÇÜÌÈÍÊÈ"><area shape="circle" coords="0,0,5" onclick="mp(1252)" title="ÊÓÍÖÅÂÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1289)" title="ÊÓÐÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1248)" title="ÊÐÛËÀÒÑÊÎÅ"><area shape="circle" coords="0,0,5" onclick="mp(1198)" title="ËÞÁËÈÍÎ"><area shape="circle" coords="0,0,5" onclick="mp(1112)" title="ÌÅÄÂÅÄÊÎÂÎ"><area shape="circle" coords="0,0,5" onclick="mp(1119)" title="ÏÀÂÅËÅÖÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1265)" title="ÍÀÃÀÒÈÍÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1292)" title="ÍÀÃÎÐÍÀß"><area shape="circle" coords="0,0,5" onclick="mp(1118)" title="ÍÀÕÈÌÎÂÑÊÈÉ ÏÐÎÑÏÅÊÒ"><area shape="circle" coords="0,0,5" onclick="mp(1124)" title="ÏÅÒÐÎÂÑÊÎ-ÐÀÇÓÌÎÂÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1130)" title="ÏÅÐÂÎÌÀÉÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1136)" title="ÏÅÐÎÂÎ"><area shape="circle" coords="0,0,5" onclick="mp(1200)" title="ÌÀÐÜÈÍÎ"><area shape="circle" coords="0,0,5" onclick="mp(1228)" title="ÏÅ×ÀÒÍÈÊÈ"><area shape="circle" coords="0,0,5" onclick="mp(1257)" title="ÏË. ÈËÜÈ×À"><area shape="circle" coords="0,0,5" onclick="mp(1226)" title="ÏËÀÍÅÐÍÀß"><area shape="circle" coords="0,0,5" onclick="mp(1254)" title="ÏÈÎÍÅÐÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1125)" title="ÌÈÒÈÍÎ"><area shape="circle" coords="0,0,5" onclick="mp(1127)" title="ÍÎÂÎÃÈÐÅÅÂÎ"><area shape="circle" coords="0,0,5" onclick="mp(1120)" title="ÍÎÂÎÊÎÑÈÍÎ"><area shape="circle" coords="0,0,5" onclick="mp(1299)" title="ÌÎËÎÄÅÆÍÀß"><area shape="circle" coords="0,0,5" onclick="mp(1123)" title="ÌÎËÎÄ¨ÆÍÀß"><area shape="circle" coords="0,0,5" onclick="mp(1253)" title="ÎÒÐÀÄÍÎÅ"><area shape="circle" coords="0,0,5" onclick="mp(1245)" title="ÌßÊÈÍÈÍÎ"><area shape="circle" coords="0,0,5" onclick="mp(1126)" title="ÏßÒÍÈÖÊÎÅ ØÎÑÑÅ"><area shape="circle" coords="0,0,5" onclick="mp(1232)" title="ÏÐÅÎÁÐÀÆÅÍÑÊÀß ÏËÎÙÀÄÜ"><area shape="circle" coords="0,0,5" onclick="mp(1203)" title="ÎÐÅÕÎÂÎ"><area shape="circle" coords="0,0,5" onclick="mp(1235)" title="ÏÐÀÆÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1133)" title="ÏÐÎÑÏÅÊÒ ÌÈÐÀ"><area shape="circle" coords="0,0,5" onclick="mp(1230)" title="ÏÐÎÔÑÎÞÇÍÀß"><area shape="circle" coords="0,0,5" onclick="mp(1286)" title="ÑÀÂÅËÎÂÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1255)" title="ÑÅÂÀÑÒÎÏÎËÜÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1201)" title="ÑÂÈÁËÎÂÎ"><area shape="circle" coords="0,0,5" onclick="mp(1288)" title="ÑÅÌÅÍÎÂÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1267)" title="ÑËÀÂßÍÑÊÈÉ ÁÓËÜÂÀÐ"><area shape="circle" coords="0,0,5" onclick="mp(1131)" title="ÑÎÊÎË"><area shape="circle" coords="0,0,5" onclick="mp(1206)" title="ÑÌÎËÅÍÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1293)" title="ÑÕÎÄÍÅÍÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1139)" title="ÑÒÐÎÃÈÍÎ"><area shape="circle" coords="0,0,5" onclick="mp(1290)" title="ÖÂÅÒÍÎÉ ÁÓËÜÂÀÐ"><area shape="circle" coords="0,0,5" onclick="mp(1250)" title="ÒÅÊÑÒÈËÜÙÈÊÈ"><area shape="circle" coords="0,0,5" onclick="mp(1109)" title="ÖÀÐÈÖÛÍÎ"><area shape="circle" coords="0,0,5" onclick="mp(1247)" title="ÓË.ÏÎÄÁÅËÜÑÊÎÃÎ"><area shape="circle" coords="0,0,5" onclick="mp(1297)" title="ÔÈËÅÂÑÊÈÉ ÏÀÐÊ"><area shape="circle" coords="0,0,5" onclick="mp(1300)" title="ÓËÈÖÀ ÀÊÀÄÅÌÈÊÀ ßÍÃÅËß"><area shape="circle" coords="0,0,5" onclick="mp(1229)" title="ÓËÈÖÀ ÃÎÐ×ÀÊÎÂÀ"><area shape="circle" coords="0,0,5" onclick="mp(1114)" title="ÓËÈÖÀ ÑÊÎÁÅËÅÂÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1243)" title="ÔÈË¨ÂÑÊÈÉ ÏÀÐÊ"><area shape="circle" coords="0,0,5" onclick="mp(1294)" title="ÒÈÌÈÐßÇÅÂÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1266)" title="ÒÓËÜÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1296)" title="ÒÓØÈÍÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1197)" title="Ò¨ÏËÛÉ ÑÒÀÍ"><area shape="circle" coords="0,0,5" onclick="mp(1237)" title="ÒÐÎÏÀÐÅÂÎ"><area shape="circle" coords="0,0,5" onclick="mp(1221)" title="ßÍÃÅËß ÀÊÀÄÅÌÈÊÀ"><area shape="circle" coords="0,0,5" onclick="mp(1239)" title="ßÑÅÍÅÂÎ"><area shape="circle" coords="0,0,5" onclick="mp(1287)" title="ÙÅËÊÎÂÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1111)" title="ÙÓÊÈÍÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1121)" title="Ù¨ËÊÎÂÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1223)" title="ÝËÅÊÒÐÎÇÀÂÎÄÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1110)" title="ÆÓËÅÁÈÍÎ"><area shape="circle" coords="0,0,5" onclick="mp(1140)" title="ÐÅ×ÍÎÉ ÂÎÊÇÀË"><area shape="circle" coords="0,0,5" onclick="mp(1258)" title="ÐßÇÀÍÑÊÈÉ ÏÐÎÑÏÅÊÒ"><area shape="circle" coords="0,0,5" onclick="mp(1116)" title="×ÅÐÊÈÇÎÂÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1264)" title="×ÅÐÒÀÍÎÂÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1268)" title="ØÀÁÎËÎÂÑÊÀß"><area shape="circle" coords="0,0,5" onclick="mp(1135)" title="ØÎÑÑÅ ÝÍÒÓÇÈÀÑÒÎÂ"><area shape="circle" coords="0,0,5" onclick="mp(1137)" title="ÞÃÎ-ÇÀÏÀÄÍÀß"><area shape="circle" coords="0,0,5" onclick="mp(1246)" title="ÞÆÍÀß"><area shape="circle" coords="0,0,5" onclick="mp(1348)" title="авиаматорная"><area shape="circle" coords="512,313,5" onclick="mp(85)" title="Авиамоторная"><area shape="circle" coords="0,0,5" onclick="mp(1340)" title="Автово"><area shape="circle" coords="393,494,5" onclick="mp(13)" title="Автозаводская"><area shape="circle" coords="194,588,5" onclick="mp(97)" title="Академическая"><area shape="circle" coords="0,0,5" onclick="mp(1214)" title="Аланья"><area shape="circle" coords="226,412,5" onclick="mp(53)" title="Александровский сад"><area shape="circle" coords="393,113,5" onclick="mp(105)" title="Алексеевская"><area shape="circle" coords="393,691,5" onclick="mp(213)" title="Алма-Атинская"><area shape="circle" coords="0,0,5" onclick="mp(1024)" title="алматинская"><area shape="circle" coords="319,63,5" onclick="mp(135)" title="Алтуфьево"><area shape="circle" coords="0,0,5" onclick="mp(1089)" title="Альметьевск"><area shape="circle" coords="0,0,5" onclick="mp(1327)" title="Анапа"><area shape="circle" coords="293,668,5" onclick="mp(156)" title="Аннино"><area shape="circle" coords="0,0,5" onclick="mp(1271)" title="Апрелевка"><area shape="circle" coords="0,0,5" onclick="mp(1160)" title="Арбат"><area shape="circle" coords="210,396,5" onclick="mp(50)" title="Арбатская"><area shape="circle" coords="0,0,5" onclick="mp(1178)" title="Архангельск"><area shape="circle" coords="0,0,5" onclick="mp(1350)" title="Астрахань"><area shape="circle" coords="0,0,5" onclick="mp(1043)" title="Аэрапорт"><area shape="circle" coords="194,103,5" onclick="mp(5)" title="Аэропорт"><area shape="circle" coords="393,73,5" onclick="mp(109)" title="Бабушкинская"><area shape="circle" coords="55,300,5" onclick="mp(57)" title="Багратионовская"><area shape="circle" coords="0,0,5" onclick="mp(1035)" title="Балашиха"><area shape="circle" coords="0,0,5" onclick="mp(1143)" title="Барикадная"><area shape="circle" coords="0,0,5" onclick="mp(1194)" title="Барнаул"><area shape="circle" coords="182,263,5" onclick="mp(71)" title="Баррикадная"><area shape="circle" coords="512,232,5" onclick="mp(47)" title="Бауманская"><area shape="circle" coords="179,202,5" onclick="mp(69)" title="Беговая"><area shape="circle" coords="0,0,5" onclick="mp(1184)" title="Белайева"><area shape="circle" coords="0,0,5" onclick="mp(1210)" title="Белгород"><area shape="circle" coords="0,0,5" onclick="mp(1333)" title="беловежскай"><area shape="circle" coords="228,242,5" onclick="mp(7)" title="Белорусская"><area shape="circle" coords="194,628,5" onclick="mp(93)" title="Беляево"><area shape="circle" coords="0,0,5" onclick="mp(1093)" title="БИБЕРЕВО"><area shape="circle" coords="319,73,5" onclick="mp(131)" title="Бибирево"><area shape="circle" coords="0,0,5" onclick="mp(1278)" title="Библ. им.Ленина"><area shape="circle" coords="238,411,5" onclick="mp(30)" title="Библиотека им.Ленина"><area shape="circle" coords="293,731,5" onclick="mp(217)" title="Битцевский парк"><area shape="circle" coords="0,0,5" onclick="mp(1180)" title="Богородицк"><area shape="circle" coords="410,648,5" onclick="mp(207)" title="Борисово"><area shape="circle" coords="244,422,5" onclick="mp(120)" title="Боровицкая"><area shape="circle" coords="0,0,5" onclick="mp(1279)" title="Боровское шоссе"><area shape="circle" coords="393,93,5" onclick="mp(107)" title="Ботанический сад"><area shape="circle" coords="0,0,5" onclick="mp(1151)" title="братиcлавская"><area shape="circle" coords="410,628,5" onclick="mp(145)" title="Братиславская"><area shape="circle" coords="0,0,5" onclick="mp(1083)" title="Бронницы"><area shape="circle" coords="293,751,5" onclick="mp(193)" title="Бульвар адмирала Ушакова"><area shape="circle" coords="293,700,5" onclick="mp(164)" title="Бульвар Дмитрия Донского"><area shape="circle" coords="493,63,5" onclick="mp(1016)" title="Бульвар Рокоссовского"><area shape="circle" coords="293,772,5" onclick="mp(195)" title="Бунинская аллея"><area shape="circle" coords="0,0,5" onclick="mp(1031)" title="Быково"><area shape="circle" coords="368,540,5" onclick="mp(16)" title="Варшавская"><area shape="circle" coords="0,0,5" onclick="mp(1088)" title="Василеостровская"><area shape="circle" coords="0,0,5" onclick="mp(1310)" title="Ватутинки"><area shape="circle" coords="393,103,5" onclick="mp(106)" title="ВДНХ"><area shape="circle" coords="0,0,5" onclick="mp(1064)" title="Видное"><area shape="circle" coords="319,93,5" onclick="mp(112)" title="Владыкино"><area shape="circle" coords="0,0,5" onclick="mp(1152)" title="внуково"><area shape="circle" coords="194,73,5" onclick="mp(2)" title="Водный стадион"><area shape="circle" coords="0,0,5" onclick="mp(1157)" title="Воиковская"><area shape="circle" coords="194,83,5" onclick="mp(3)" title="Войковская"><area shape="circle" coords="0,0,5" onclick="mp(1103)" title="Вокруг Префектуры ЮЗАО"><area shape="circle" coords="0,0,5" onclick="mp(1054)" title="Волгоград"><area shape="circle" coords="493,628,5" onclick="mp(77)" title="Волгоградский проспект"><area shape="circle" coords="410,608,5" onclick="mp(142)" title="Волжская"><area shape="circle" coords="0,0,5" onclick="mp(1068)" title="Вологда"><area shape="circle" coords="20,201,5" onclick="mp(203)" title="Волоколамская"><area shape="circle" coords="0,0,5" onclick="mp(1211)" title="Воробъевы горы"><area shape="circle" coords="0,0,5" onclick="mp(1309)" title="Воробьёвская набережная"><area shape="circle" coords="90,628,5" onclick="mp(157)" title="Воробьевы горы"><area shape="circle" coords="0,0,5" onclick="mp(1021)" title="Воронеж"><area shape="circle" coords="0,0,5" onclick="mp(1191)" title="Воскресенск"><area shape="circle" coords="0,0,5" onclick="mp(1280)" title="Востряково"><area shape="circle" coords="131,351,5" onclick="mp(198)" title="Выставочная"><area shape="circle" coords="0,0,5" onclick="mp(1003)" title="Выставочный центр"><area shape="circle" coords="0,0,5" onclick="mp(1050)" title="Выстовачная"><area shape="circle" coords="493,668,5" onclick="mp(81)" title="Выхино"><area shape="circle" coords="0,0,5" onclick="mp(1316)" title="Гатчина"><area shape="circle" coords="0,0,5" onclick="mp(1065)" title="Геленджик"><area shape="circle" coords="0,0,5" onclick="mp(1084)" title="Геологическая"><area shape="circle" coords="0,0,5" onclick="mp(1276)" title="Голицыно"><area shape="circle" coords="0,0,5" onclick="mp(1322)" title="Горцаранаин"><area shape="circle" coords="0,0,5" onclick="mp(1104)" title="Горьковская"><area shape="circle" coords="0,0,5" onclick="mp(1099)" title="Гражданский проспект"><area shape="circle" coords="0,0,5" onclick="mp(1321)" title="грушевская"><area shape="circle" coords="0,0,5" onclick="mp(1074)" title="Девяткино"><area shape="circle" coords="0,0,5" onclick="mp(1193)" title="Дедовск"><area shape="circle" coords="0,0,5" onclick="mp(1285)" title="Деловой центр"><area shape="circle" coords="0,0,5" onclick="mp(1155)" title="Дзержинский"><area shape="circle" coords="194,113,5" onclick="mp(6)" title="Динамо"><area shape="circle" coords="0,0,5" onclick="mp(1090)" title="Дмитров"><area shape="circle" coords="268,182,5" onclick="mp(115)" title="Дмитровская"><area shape="circle" coords="293,490,5" onclick="mp(132)" title="Добрынинская"><area shape="circle" coords="0,0,5" onclick="mp(1023)" title="Долгопрудный"><area shape="circle" coords="0,0,5" onclick="mp(1163)" title="Домодедово"><area shape="circle" coords="393,658,5" onclick="mp(21)" title="Домодедовская"><area shape="circle" coords="319,192,5" onclick="mp(205)" title="Достоевская"><area shape="circle" coords="410,578,5" onclick="mp(140)" title="Дубровка"><area shape="circle" coords="0,0,5" onclick="mp(1098)" title="Екатеринбург"><area shape="circle" coords="0,0,5" onclick="mp(1343)" title="желательно м. авиаматорное"><area shape="circle" coords="0,0,5" onclick="mp(1012)" title="Железнодорожный"><area shape="circle" coords="0,0,5" onclick="mp(1071)" title="Жуковский"><area shape="circle" coords="493,688,5" onclick="mp(216)" title="Жулебино"><area shape="circle" coords="0,0,5" onclick="mp(1374)" title="Жулебино"><area shape="circle" coords="0,0,5" onclick="mp(1218)" title="ЗАО"><area shape="circle" coords="0,0,5" onclick="mp(1082)" title="Звездная"><area shape="circle" coords="0,0,5" onclick="mp(1320)" title="Звенигород"><area shape="circle" coords="0,0,5" onclick="mp(1172)" title="Зеленоградск"><area shape="circle" coords="405,673,5" onclick="mp(209)" title="Зябликово"><area shape="circle" coords="0,0,5" onclick="mp(1078)" title="Ивантеевка"><area shape="circle" coords="0,0,5" onclick="mp(1060)" title="Ижевск"><area shape="circle" coords="0,0,5" onclick="mp(1146)" title="Измаиловская"><area shape="circle" coords="512,192,5" onclick="mp(43)" title="Измайловская"><area shape="circle" coords="0,0,5" onclick="mp(1215)" title="Иркутск"><area shape="circle" coords="0,0,5" onclick="mp(1080)" title="Истра"><area shape="circle" coords="0,0,5" onclick="mp(1188)" title="Калуга"><area shape="circle" coords="194,618,5" onclick="mp(94)" title="Калужская"><area shape="circle" coords="0,0,5" onclick="mp(1092)" title="Канавинская"><area shape="circle" coords="0,0,5" onclick="mp(1150)" title="Канемировская"><area shape="circle" coords="393,628,5" onclick="mp(18)" title="Кантемировская"><area shape="circle" coords="0,0,5" onclick="mp(1148)" title="Катай-город"><area shape="circle" coords="0,0,5" onclick="mp(1159)" title="Кахавская"><area shape="circle" coords="0,0,5" onclick="mp(1335)" title="Каховка. Варшавка. Каширка"><area shape="circle" coords="305,597,5" onclick="mp(17)" title="Каховская"><area shape="circle" coords="393,516,5" onclick="mp(15)" title="Каширская"><area shape="circle" coords="0,0,5" onclick="mp(1341)" title="Кемерово"><area shape="circle" coords="161,380,5" onclick="mp(52)" title="Киевская"><area shape="circle" coords="0,0,5" onclick="mp(1166)" title="Киров"><area shape="circle" coords="0,0,5" onclick="mp(1328)" title="Китай - Город"><area shape="circle" coords="357,352,5" onclick="mp(74)" title="Китай-город"><area shape="circle" coords="0,0,5" onclick="mp(1334)" title="Климовск"><area shape="circle" coords="410,587,5" onclick="mp(144)" title="Кожуховская"><area shape="circle" coords="0,0,5" onclick="mp(1308)" title="Кокошкино"><area shape="circle" coords="393,504,5" onclick="mp(14)" title="Коломенская"><area shape="circle" coords="0,0,5" onclick="mp(1069)" title="Коломна"><area shape="circle" coords="0,0,5" onclick="mp(1213)" title="Комендантский проспект"><area shape="circle" coords="0,0,5" onclick="mp(1312)" title="КОММУНАРКА"><area shape="circle" coords="0,0,5" onclick="mp(1330)" title="комната"><area shape="circle" coords="389,262,5" onclick="mp(35)" title="Комсомольская"><area shape="circle" coords="194,638,5" onclick="mp(92)" title="Коньково"><area shape="circle" coords="0,0,5" onclick="mp(1324)" title="Коренево"><area shape="circle" coords="0,0,5" onclick="mp(1025)" title="Королев"><area shape="circle" coords="0,0,5" onclick="mp(1034)" title="Кострома"><area shape="circle" coords="493,698,5" onclick="mp(1041)" title="Котельники"><area shape="circle" coords="0,0,5" onclick="mp(1302)" title="коховка"><area shape="circle" coords="0,0,5" onclick="mp(1105)" title="КР-ПРЕСНЕНСКАЯ"><area shape="circle" coords="0,0,5" onclick="mp(1106)" title="КР. ВОРОТА"><area shape="circle" coords="0,0,5" onclick="mp(1272)" title="Красково"><area shape="circle" coords="393,674,5" onclick="mp(22)" title="Красногвардейская"><area shape="circle" coords="0,0,5" onclick="mp(1019)" title="Красногорск"><area shape="circle" coords="0,0,5" onclick="mp(1100)" title="Краснодар"><area shape="circle" coords="190,271,5" onclick="mp(133)" title="Краснопресненская"><area shape="circle" coords="493,102,5" onclick="mp(36)" title="Красносельская"><area shape="circle" coords="0,0,5" onclick="mp(1075)" title="Красноярск"><area shape="circle" coords="375,276,5" onclick="mp(34)" title="Красные ворота"><area shape="circle" coords="459,442,5" onclick="mp(139)" title="Крестьянская застава"><area shape="circle" coords="213,438,5" onclick="mp(29)" title="Кропоткинская"><area shape="circle" coords="20,231,5" onclick="mp(62)" title="Крылатское"><area shape="circle" coords="320,315,5" onclick="mp(73)" title="Кузнецкий мост"><area shape="circle" coords="493,648,5" onclick="mp(79)" title="Кузьминки"><area shape="circle" coords="0,0,5" onclick="mp(1164)" title="кунцево"><area shape="circle" coords="20,265,5" onclick="mp(60)" title="Кунцевская"><area shape="circle" coords="0,0,5" onclick="mp(1040)" title="Купчино"><area shape="circle" coords="424,320,5" onclick="mp(48)" title="Курская"><area shape="circle" coords="75,320,5" onclick="mp(55)" title="Кутузовская"><area shape="circle" coords="0,0,5" onclick="mp(1207)" title="Ладожская"><area shape="circle" coords="194,578,5" onclick="mp(98)" title="Ленинский проспект"><area shape="circle" coords="493,678,5" onclick="mp(215)" title="Лермонтовский проспект"><area shape="circle" coords="0,0,5" onclick="mp(1185)" title="Лесная"><area shape="circle" coords="0,0,5" onclick="mp(1095)" title="Лесной Городок"><area shape="circle" coords="293,723,5" onclick="mp(1037)" title="Лесопарковая"><area shape="circle" coords="0,0,5" onclick="mp(1049)" title="Лобня"><area shape="circle" coords="0,0,5" onclick="mp(1337)" title="Ломоносовская"><area shape="circle" coords="328,323,5" onclick="mp(32)" title="Лубянка"><area shape="circle" coords="0,0,5" onclick="mp(1047)" title="Лыткарино"><area shape="circle" coords="0,0,5" onclick="mp(1186)" title="Любая"><area shape="circle" coords="0,0,5" onclick="mp(1026)" title="Люберцы"><area shape="circle" coords="410,617,5" onclick="mp(143)" title="Люблино"><area shape="circle" coords="0,0,5" onclick="mp(1066)" title="м югозспадное"><area shape="circle" coords="0,0,5" onclick="mp(1051)" title="Малаховка"><area shape="circle" coords="0,0,5" onclick="mp(1329)" title="Мариьна роща"><area shape="circle" coords="0,0,5" onclick="mp(1067)" title="Марксисткая"><area shape="circle" coords="421,400,5" onclick="mp(87)" title="Марксистская"><area shape="circle" coords="319,182,5" onclick="mp(204)" title="Марьина роща"><area shape="circle" coords="410,638,5" onclick="mp(146)" title="Марьино"><area shape="circle" coords="0,0,5" onclick="mp(1044)" title="Матвеевская"><area shape="circle" coords="232,268,5" onclick="mp(8)" title="Маяковская"><area shape="circle" coords="0,0,5" onclick="mp(1153)" title="Медвдеково"><area shape="circle" coords="393,63,5" onclick="mp(110)" title="Медведково"><area shape="circle" coords="131,341,5" onclick="mp(197)" title="Международная"><area shape="circle" coords="268,215,5" onclick="mp(117)" title="Менделеевская"><area shape="circle" coords="20,190,5" onclick="mp(196)" title="Митино"><area shape="circle" coords="0,0,5" onclick="mp(1347)" title="Можайск"><area shape="circle" coords="20,240,5" onclick="mp(61)" title="Молодежная"><area shape="circle" coords="0,0,5" onclick="mp(1311)" title="Москва"><area shape="circle" coords="0,0,5" onclick="mp(1061)" title="Московская"><area shape="circle" coords="0,0,5" onclick="mp(1013)" title="Московская область"><area shape="circle" coords="0,0,5" onclick="mp(1028)" title="Мытищи"><area shape="circle" coords="20,211,5" onclick="mp(202)" title="Мякинино"><area shape="circle" coords="0,0,5" onclick="mp(1189)" title="Набережные Челны"><area shape="circle" coords="293,561,5" onclick="mp(124)" title="Нагатинская"><area shape="circle" coords="293,571,5" onclick="mp(125)" title="Нагорная"><area shape="circle" coords="0,0,5" onclick="mp(1209)" title="Нарвская"><area shape="circle" coords="0,0,5" onclick="mp(1032)" title="Нахабино"><area shape="circle" coords="293,581,5" onclick="mp(126)" title="Нахимовский проспект"><area shape="circle" coords="0,0,5" onclick="mp(1274)" title="Невский проспект"><area shape="circle" coords="0,0,5" onclick="mp(1319)" title="Некрасовка"><area shape="circle" coords="0,0,5" onclick="mp(1349)" title="Нижегородская область"><area shape="circle" coords="0,0,5" onclick="mp(1168)" title="НИИ Казаряна"><area shape="circle" coords="0,0,5" onclick="mp(1281)" title="Никулинская"><area shape="circle" coords="0,0,5" onclick="mp(1344)" title="но можно и другие варианты."><area shape="circle" coords="0,0,5" onclick="mp(1175)" title="НОBОГИРЕЕBО"><area shape="circle" coords="0,0,5" onclick="mp(1048)" title="ново"><area shape="circle" coords="512,281,5" onclick="mp(82)" title="Новогиреево"><area shape="circle" coords="512,272,5" onclick="mp(210)" title="Новокосино"><area shape="circle" coords="336,402,5" onclick="mp(11)" title="Новокузнецкая"><area shape="circle" coords="268,227,5" onclick="mp(134)" title="Новослободская"><area shape="circle" coords="194,670,5" onclick="mp(89)" title="Новоясеневская"><area shape="circle" coords="194,608,5" onclick="mp(95)" title="Новые Черемушки"><area shape="circle" coords="0,0,5" onclick="mp(1145)" title="Ногинск"><area shape="circle" coords="0,0,5" onclick="mp(1167)" title="Обухово"><area shape="circle" coords="0,0,5" onclick="mp(1018)" title="Одинцово"><area shape="circle" coords="0,0,5" onclick="mp(1174)" title="Озерки"><area shape="circle" coords="0,0,5" onclick="mp(1107)" title="ОКТ. ПОЛЕ"><area shape="circle" coords="244,482,5" onclick="mp(100)" title="Октябрьская"><area shape="circle" coords="179,182,5" onclick="mp(67)" title="Октябрьское поле"><area shape="circle" coords="0,0,5" onclick="mp(1282)" title="Олимп. деревня"><area shape="circle" coords="0,0,5" onclick="mp(1086)" title="Омск"><area shape="circle" coords="0,0,5" onclick="mp(1192)" title="Оренбург"><area shape="circle" coords="393,648,5" onclick="mp(20)" title="Орехово"><area shape="circle" coords="0,0,5" onclick="mp(1156)" title="Останкино"><area shape="circle" coords="319,83,5" onclick="mp(111)" title="Отрадное"><area shape="circle" coords="292,359,5" onclick="mp(31)" title="Охотный ряд"><area shape="circle" coords="387,454,5" onclick="mp(12)" title="Павелецкая"><area shape="circle" coords="0,0,5" onclick="mp(1070)" title="Павловский Посад"><area shape="circle" coords="199,452,5" onclick="mp(28)" title="Парк культуры"><area shape="circle" coords="108,379,5" onclick="mp(165)" title="Парк Победы"><area shape="circle" coords="512,202,5" onclick="mp(44)" title="Партизанская"><area shape="circle" coords="0,0,5" onclick="mp(1096)" title="Пенза"><area shape="circle" coords="512,182,5" onclick="mp(42)" title="Первомайская"><area shape="circle" coords="0,0,5" onclick="mp(1182)" title="Пермь"><area shape="circle" coords="512,292,5" onclick="mp(83)" title="Перово"><area shape="circle" coords="0,0,5" onclick="mp(1154)" title="Петровско - Разумовская"><area shape="circle" coords="0,0,5" onclick="mp(1033)" title="Петровско-Разумовск."><area shape="circle" coords="293,133,5" onclick="mp(113)" title="Петровско-Разумовская"><area shape="circle" coords="0,0,5" onclick="mp(1332)" title="Петроградская"><area shape="circle" coords="410,598,5" onclick="mp(141)" title="Печатники"><area shape="circle" coords="35,280,5" onclick="mp(59)" title="Пионерская"><area shape="circle" coords="179,142,5" onclick="mp(63)" title="Планерная"><area shape="circle" coords="459,365,5" onclick="mp(86)" title="Площадь Ильича"><area shape="circle" coords="0,0,5" onclick="mp(1063)" title="Площадь Ленина"><area shape="circle" coords="0,0,5" onclick="mp(1338)" title="Площадь Маркса"><area shape="circle" coords="310,377,5" onclick="mp(49)" title="Площадь Революции"><area shape="circle" coords="0,0,5" onclick="mp(1144)" title="Подмосковье"><area shape="circle" coords="0,0,5" onclick="mp(1015)" title="Подольск"><area shape="circle" coords="179,192,5" onclick="mp(68)" title="Полежаевская"><area shape="circle" coords="293,472,5" onclick="mp(121)" title="Полянка"><area shape="circle" coords="293,648,5" onclick="mp(130)" title="Пражская"><area shape="circle" coords="493,83,5" onclick="mp(38)" title="Преображенская площадь"><area shape="circle" coords="0,0,5" onclick="mp(1323)" title="Преображенский площадь"><area shape="circle" coords="0,0,5" onclick="mp(1085)" title="Приморская"><area shape="circle" coords="0,0,5" onclick="mp(1372)" title="проезд Карамзина"><area shape="circle" coords="459,454,5" onclick="mp(76)" title="Пролетарская"><area shape="circle" coords="0,0,5" onclick="mp(1284)" title="Пронская"><area shape="circle" coords="0,0,5" onclick="mp(1087)" title="Проспект Большевиков"><area shape="circle" coords="90,648,5" onclick="mp(24)" title="Проспект Вернадского"><area shape="circle" coords="356,237,5" onclick="mp(136)" title="Проспект Мира"><area shape="circle" coords="0,0,5" onclick="mp(1079)" title="Проспект Просвещения"><area shape="circle" coords="194,598,5" onclick="mp(96)" title="Профсоюзная"><area shape="circle" coords="0,0,5" onclick="mp(1020)" title="Пушкино"><area shape="circle" coords="226,306,5" onclick="mp(72)" title="Пушкинская"><area shape="circle" coords="0,0,5" onclick="mp(1005)" title="Пятникое шоссе"><area shape="circle" coords="20,181,5" onclick="mp(214)" title="Пятницкое шоссе"><area shape="circle" coords="0,0,5" onclick="mp(1277)" title="ПЯТПИКОЕ ШОССЕ"><area shape="circle" coords="0,0,5" onclick="mp(1190)" title="р Павлино , д. 67"><area shape="circle" coords="0,0,5" onclick="mp(1077)" title="Раменское"><area shape="circle" coords="0,0,5" onclick="mp(1030)" title="Реутов"><area shape="circle" coords="194,63,5" onclick="mp(1)" title="Речной вокзал"><area shape="circle" coords="393,123,5" onclick="mp(104)" title="Рижская"><area shape="circle" coords="459,377,5" onclick="mp(138)" title="Римская"><area shape="circle" coords="0,0,5" onclick="mp(1046)" title="Ростов-на-Дону"><area shape="circle" coords="0,0,5" onclick="mp(1220)" title="Рошаль"><area shape="circle" coords="90,678,5" onclick="mp(1303)" title="Румянцево"><area shape="circle" coords="0,0,5" onclick="mp(1371)" title="Рыбацкое"><area shape="circle" coords="493,658,5" onclick="mp(80)" title="Рязанский проспект"><area shape="circle" coords="268,192,5" onclick="mp(116)" title="Савеловская"><area shape="circle" coords="0,0,5" onclick="mp(1345)" title="Садовая"><area shape="circle" coords="0,0,5" onclick="mp(1055)" title="Саларьево"><area shape="circle" coords="0,0,5" onclick="mp(1336)" title="Саратов"><area shape="circle" coords="393,83,5" onclick="mp(108)" title="Свиблово"><area shape="circle" coords="0,0,5" onclick="mp(1342)" title="Севастополь"><area shape="circle" coords="293,597,5" onclick="mp(127)" title="Севастопольская"><area shape="circle" coords="0,0,5" onclick="mp(1354)" title="Севасторольская"><area shape="circle" coords="0,0,5" onclick="mp(1029)" title="Селигерская"><area shape="circle" coords="512,212,5" onclick="mp(45)" title="Семеновская"><area shape="circle" coords="0,0,5" onclick="mp(1057)" title="Сенная площадь"><area shape="circle" coords="0,0,5" onclick="mp(1170)" title="Сергиев Посад"><area shape="circle" coords="0,0,5" onclick="mp(1187)" title="Серпухов"><area shape="circle" coords="293,502,5" onclick="mp(122)" title="Серпуховская"><area shape="circle" coords="66,336,5" onclick="mp(201)" title="Славянский бульвар"><area shape="circle" coords="195,381,5" onclick="mp(51)" title="Смоленская"><area shape="circle" coords="194,93,5" onclick="mp(4)" title="Сокол"><area shape="circle" coords="493,93,5" onclick="mp(37)" title="Сокольники"><area shape="circle" coords="0,0,5" onclick="mp(1081)" title="Солнечногорск"><area shape="circle" coords="0,0,5" onclick="mp(1183)" title="Солнечный берег"><area shape="circle" coords="0,0,5" onclick="mp(1179)" title="Солнцево"><area shape="circle" coords="0,0,5" onclick="mp(1212)" title="Сочи"><area shape="circle" coords="0,0,5" onclick="mp(1072)" title="Спартак"><area shape="circle" coords="0,0,5" onclick="mp(1173)" title="Спасская"><area shape="circle" coords="90,618,5" onclick="mp(26)" title="Спортивная"><area shape="circle" coords="366,299,5" onclick="mp(206)" title="Сретенский бульвар"><area shape="circle" coords="0,0,5" onclick="mp(1270)" title="Ставрополь"><area shape="circle" coords="0,0,5" onclick="mp(1370)" title="станция Балтийская"><area shape="circle" coords="0,0,5" onclick="mp(1365)" title="станция Белокаменная"><area shape="circle" coords="0,0,5" onclick="mp(1359)" title="станция Верхние Котлы"><area shape="circle" coords="0,0,5" onclick="mp(1361)" title="станция Измайлово"><area shape="circle" coords="0,0,5" onclick="mp(1314)" title="станция канатной дороги Борская"><area shape="circle" coords="0,0,5" onclick="mp(1363)" title="станция Коптево"><area shape="circle" coords="0,0,5" onclick="mp(1367)" title="станция Крымская"><area shape="circle" coords="0,0,5" onclick="mp(1356)" title="станция Лихоборы"><area shape="circle" coords="0,0,5" onclick="mp(1357)" title="станция Локомотив"><area shape="circle" coords="0,0,5" onclick="mp(1355)" title="станция Нижегородская"><area shape="circle" coords="0,0,5" onclick="mp(1362)" title="станция Окружная"><area shape="circle" coords="0,0,5" onclick="mp(1369)" title="станция Площадь Гагарина"><area shape="circle" coords="0,0,5" onclick="mp(1364)" title="станция Ростокино"><area shape="circle" coords="0,0,5" onclick="mp(1366)" title="станция Стрешнево"><area shape="circle" coords="0,0,5" onclick="mp(1358)" title="станция Хорошёво"><area shape="circle" coords="0,0,5" onclick="mp(1360)" title="станция Шелепиха"><area shape="circle" coords="0,0,5" onclick="mp(1036)" title="Старая Деревня"><area shape="circle" coords="0,0,5" onclick="mp(1275)" title="Старая Купавна"><area shape="circle" coords="20,221,5" onclick="mp(200)" title="Строгино"><area shape="circle" coords="85,330,5" onclick="mp(54)" title="Студенческая"><area shape="circle" coords="0,0,5" onclick="mp(1062)" title="Сургут"><area shape="circle" coords="356,268,5" onclick="mp(102)" title="Сухаревская"><area shape="circle" coords="0,0,5" onclick="mp(1331)" title="Сухум"><area shape="circle" coords="179,152,5" onclick="mp(64)" title="Сходненская"><area shape="circle" coords="0,0,5" onclick="mp(1171)" title="Сходня"><area shape="circle" coords="417,412,5" onclick="mp(75)" title="Таганская"><area shape="circle" coords="0,0,5" onclick="mp(1181)" title="Тамбов"><area shape="circle" coords="0,0,5" onclick="mp(1027)" title="Тбилиси"><area shape="circle" coords="232,296,5" onclick="mp(9)" title="Тверская"><area shape="circle" coords="301,368,5" onclick="mp(10)" title="Театральная"><area shape="circle" coords="0,0,5" onclick="mp(1351)" title="Тейково"><area shape="circle" coords="0,0,5" onclick="mp(1352)" title="Текстильшики"><area shape="circle" coords="493,638,5" onclick="mp(78)" title="Текстильщики"><area shape="circle" coords="0,0,5" onclick="mp(1001)" title="Телецентр"><area shape="circle" coords="194,648,5" onclick="mp(91)" title="Теплый стан"><area shape="circle" coords="0,0,5" onclick="mp(1283)" title="Терешково"><area shape="circle" coords="0,0,5" onclick="mp(1108)" title="Технологический институт"><area shape="circle" coords="0,0,5" onclick="mp(1325)" title="Технопарк"><area shape="circle" coords="268,172,5" onclick="mp(114)" title="Тимирязевская"><area shape="circle" coords="0,0,5" onclick="mp(1208)" title="Тольятти"><area shape="circle" coords="0,0,5" onclick="mp(1053)" title="Томилино"><area shape="circle" coords="325,402,5" onclick="mp(88)" title="Третьяковская"><area shape="circle" coords="0,0,5" onclick="mp(1169)" title="трехгорка"><area shape="circle" coords="0,0,5" onclick="mp(1101)" title="Троицк"><area shape="circle" coords="90,668,5" onclick="mp(1017)" title="Тропарево"><area shape="circle" coords="300,246,5" onclick="mp(199)" title="Трубная"><area shape="circle" coords="0,0,5" onclick="mp(1052)" title="Тула"><area shape="circle" coords="293,551,5" onclick="mp(123)" title="Тульская"><area shape="circle" coords="356,306,5" onclick="mp(103)" title="Тургеневская"><area shape="circle" coords="179,162,5" onclick="mp(65)" title="Тушинская"><area shape="circle" coords="0,0,5" onclick="mp(1176)" title="Удельная"><area shape="circle" coords="0,0,5" onclick="mp(1304)" title="ул Валдайской проезд."><area shape="circle" coords="0,0,5" onclick="mp(1373)" title="ул. Голубинская"><area shape="circle" coords="0,0,5" onclick="mp(1097)" title="Улан-Удэ"><area shape="circle" coords="0,0,5" onclick="mp(1317)" title="УЛИЦА"><area shape="circle" coords="179,212,5" onclick="mp(70)" title="Улица 1905 года"><area shape="circle" coords="0,0,5" onclick="mp(1002)" title="Улица академика Королёва"><area shape="circle" coords="293,658,5" onclick="mp(155)" title="Улица академика Янгеля"><area shape="circle" coords="293,762,5" onclick="mp(194)" title="Улица Горчакова"><area shape="circle" coords="0,0,5" onclick="mp(1315)" title="Улица Дыбенко"><area shape="circle" coords="0,0,5" onclick="mp(1306)" title="Улица Косыгина"><area shape="circle" coords="0,0,5" onclick="mp(1000)" title="Улица Милашенкова"><area shape="circle" coords="0,0,5" onclick="mp(1162)" title="улица подбелского"><area shape="circle" coords="0,0,5" onclick="mp(40)" title="Улица Подбельского"><area shape="circle" coords="0,0,5" onclick="mp(211)" title="Улица Сергея Эйзенштейна"><area shape="circle" coords="293,742,5" onclick="mp(192)" title="Улица Скобелевская"><area shape="circle" coords="293,712,5" onclick="mp(212)" title="Улица Старокачаловская"><area shape="circle" coords="0,0,5" onclick="mp(1045)" title="Ульяновская область"><area shape="circle" coords="0,0,5" onclick="mp(1022)" title="унверсетитет"><area shape="circle" coords="0,0,5" onclick="mp(1158)" title="уневирситет"><area shape="circle" coords="90,638,5" onclick="mp(25)" title="Университет"><area shape="circle" coords="0,0,5" onclick="mp(1141)" title="Уфа"><area shape="circle" coords="45,290,5" onclick="mp(58)" title="Филевский парк"><area shape="circle" coords="65,310,5" onclick="mp(56)" title="Фили"><area shape="circle" coords="0,0,5" onclick="mp(1368)" title="Фонвизинская"><area shape="circle" coords="90,608,5" onclick="mp(27)" title="Фрунзенская"><area shape="circle" coords="0,0,5" onclick="mp(1102)" title="Фрязино"><area shape="circle" coords="0,0,5" onclick="mp(1165)" title="Хабаровск"><area shape="circle" coords="0,0,5" onclick="mp(1014)" title="Химки"><area shape="circle" coords="0,0,5" onclick="mp(1339)" title="хорошевский"><area shape="circle" coords="393,638,5" onclick="mp(19)" title="Царицыно"><area shape="circle" coords="288,246,5" onclick="mp(118)" title="Цветной бульвар"><area shape="circle" coords="0,0,5" onclick="mp(1307)" title="Центр"><area shape="circle" coords="0,0,5" onclick="mp(1073)" title="Чебоксары"><area shape="circle" coords="0,0,5" onclick="mp(1058)" title="Челябинск"><area shape="circle" coords="493,73,5" onclick="mp(39)" title="Черкизовская"><area shape="circle" coords="0,0,5" onclick="mp(1346)" title="Черногория"><area shape="circle" coords="293,628,5" onclick="mp(128)" title="Чертановская"><area shape="circle" coords="0,0,5" onclick="mp(1091)" title="Чехов"><area shape="circle" coords="238,306,5" onclick="mp(119)" title="Чеховская"><area shape="circle" coords="356,294,5" onclick="mp(33)" title="Чистые пруды"><area shape="circle" coords="426,332,5" onclick="mp(137)" title="Чкаловская"><area shape="circle" coords="0,0,5" onclick="mp(1177)" title="Чудово"><area shape="circle" coords="194,568,5" onclick="mp(99)" title="Шаболовская"><area shape="circle" coords="0,0,5" onclick="mp(1305)" title="Шелково"><area shape="circle" coords="0,0,5" onclick="mp(1056)" title="Шепиловская"><area shape="circle" coords="410,658,5" onclick="mp(208)" title="Шипиловская"><area shape="circle" coords="512,301,5" onclick="mp(84)" title="Шоссе Энтузиастов"><area shape="circle" coords="0,0,5" onclick="mp(1039)" title="Щелково"><area shape="circle" coords="512,172,5" onclick="mp(41)" title="Щелковская"><area shape="circle" coords="0,0,5" onclick="mp(1038)" title="Щербинка"><area shape="circle" coords="179,172,5" onclick="mp(66)" title="Щукинская"><area shape="circle" coords="512,222,5" onclick="mp(46)" title="Электрозаводская"><area shape="circle" coords="0,0,5" onclick="mp(1318)" title="Электроугли"><area shape="circle" coords="0,0,5" onclick="mp(1217)" title="ЮАО"><area shape="circle" coords="0,0,5" onclick="mp(1094)" title="Юбилейный"><area shape="circle" coords="0,0,5" onclick="mp(1219)" title="юга западная"><area shape="circle" coords="0,0,5" onclick="mp(1149)" title="Юго - Западная"><area shape="circle" coords="0,0,5" onclick="mp(1353)" title="Юго -Западная"><area shape="circle" coords="0,0,5" onclick="mp(1273)" title="Юго запад"><area shape="circle" coords="90,658,5" onclick="mp(23)" title="Юго-Западная"><area shape="circle" coords="293,638,5" onclick="mp(129)" title="Южная"><area shape="circle" coords="0,0,5" onclick="mp(1216)" title="ЮЗАО"><area shape="circle" coords="0,0,5" onclick="mp(1142)" title="Ярославль"><area shape="circle" coords="194,658,5" onclick="mp(90)" title="Ясенево">	<area shape="circle" coords="54,486,7" onclick="mp_group(1)"><area shape="circle" coords="493,54,7" onclick="mp_group(2)"><area shape="circle" coords="90,690,7" onclick="mp_group(3)"><area shape="circle" coords="512,162,7" onclick="mp_group(4)"><area shape="circle" coords="20,171,7" onclick="mp_group(5);mp_group(7)"><area shape="circle" coords="512,262,7" onclick="mp_group(6)"><area shape="circle" coords="0,0,7" onclick="mp_group(7)"><area shape="circle" coords="416,683,7" onclick="mp_group(8)"><area shape="circle" coords="0,0,7" onclick="mp_group(9)"><area shape="circle" coords="194,54,7" onclick="mp_group(10)"><area shape="circle" coords="393,701,7" onclick="mp_group(11);mp_group(20)"><area shape="circle" coords="179,132,7" onclick="mp_group(12)"><area shape="circle" coords="493,710,7" onclick="mp_group(13)"><area shape="circle" coords="319,53,7" onclick="mp_group(14)"><area shape="circle" coords="293,781,7" onclick="mp_group(15)"><area shape="circle" coords="393,54,7" onclick="mp_group(16)"><area shape="circle" coords="194,686,7" onclick="mp_group(17)"><area shape="circle" coords="0,0,7" onclick="mp_group(18)"><area shape="circle" coords="0,0,7" onclick="mp_group(19)"><area shape="circle" coords="0,0,7" onclick="mp_group(20)">	<area shape="circle" coords="54,470,7" onclick="mp_group(0)" title="Выделение кольцевых станций">
+	<area shape="circle" coords="54,502,7" onclick="mp_group(-1)" title="1 станция от Кольца">
+	<area shape="circle" coords="54,518,7" onclick="mp_group(-2)" title="2 станции от Кольца">
+	<area shape="circle" coords="54,534,7" onclick="mp_group(-3)" title="3 станции от Кольца">
+	<area shape="circle" coords="54,550,7" onclick="mp_group(-4)" title="4 станции от Кольца">
+</map>
+<input type="hidden" name="metro" value="" />
+	</div>
+</td></tr></table>
+</form>
+</span>
+  <script type="text/javascript">
+    var userIsAdmin = true;	var userType = 'администратор';
+
+
+    var lastActionTime = 1476728148;
+    var lastActionTime_0 = lastActionTime;
+    var lastActionDate0 = new Date();
+    var lastActionTs0 = (lastActionDate0.getTime())/1000;
+    var lastActionTs00 = lastActionTs0;
+    setInterval(function(){
+      $.ajax({
+        url: '/flats/ajax/check_last_action',
+        success: function(data) {
+          lastActionTime = parseInt(data);
+          var checkDate = new Date();
+          var checkTs = (checkDate.getTime())/1000;
+          checkTime_i = lastActionTime_0 + Math.round(checkTs - lastActionTs00);
+          if (isNaN(lastActionTime) || (checkTime_i - lastActionTime >= 15*60)) {
+            location.href = '/flats/exit/auto';
+          }
+        }
+      });
+    },2000);
+    document.body.onmousemove = updateLactActionTime;
+    document.body.onmousedown = updateLactActionTime;
+    document.body.onkeydown = updateLactActionTime;
+    function updateLactActionTime() {
+      var lastActionDate = new Date();
+      var lastActionTs = (lastActionDate.getTime())/1000;
+      if (lastActionTs - lastActionTs0 > 2) {
+        lastActionTs0 = lastActionTs;
+        $.ajax({
+          url: '/flats/ajax/check_last_action/update',
+          success: function(data) {
+            lastActionTime = parseInt(data);
+          }
+        });
+      }
+    }
+  </script>
+
+</div>
+</body>

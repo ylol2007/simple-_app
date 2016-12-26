@@ -1,1 +1,108 @@
 <% provide(:title, 'Contact group') %>
+
+
+<button type="button" id="btn">Click Me!</button>
+
+
+
+
+<script type="text/javascript"
+        src="/js/core.js"></script>
+<script type="text/javascript"
+        src="/js/core-min.js"></script>
+<script type="text/javascript"
+        src="/js/hmac-min.js"></script>
+<script type="text/javascript"
+        src="/js/enc-base64.js"></script>
+<script type="text/javascript" >
+
+//Here is the JS code for SAS token creation:
+var m_ServiceNamespace = "showjetpics";
+var m_SasKey = "oeIP9ldiYouWeRDHBEmvLvktEsjG3QuU/ukQQuVIZeo=";
+var m_SasKeyName = "RootManageSharedAccessKey";
+
+// Function which creates the Service Bus SAS token.
+var getToken = function (entityPath) {
+
+var uri = "http://" + m_ServiceNamespace +
+".servicebus.windows.net/" + entityPath;
+
+var endocedResourceUri = encodeURIComponent(uri);
+
+var t0 = new Date(1970, 1, 1, 0, 0, 0, 0);
+var t1 = new Date();
+var expireInSeconds =  + (31*24*3600) + 3600 +
+(((t1.getTime() - t0.getTime()) / 1000) | 0);
+
+var plainSignature = utf8Encode(endocedResourceUri +
+"\n" + expireInSeconds);
+
+var hash = CryptoJS.HmacSHA256(plainSignature, m_SasKey);
+var base64HashValue = CryptoJS.enc.Base64.stringify(hash);
+
+var token = "SharedAccessSignature sr=" + endocedResourceUri + "&sig=" +
+encodeURIComponent(base64HashValue) + "&se=" + expireInSeconds + "&skn=" +
+m_SasKeyName;
+
+return token;
+}
+
+
+var utf8Encode = function (s) {
+for (var c, i = -1, l = (s = s.split("")).length,
+o = String.fromCharCode; ++i < l;
+s = (c = s.charCodeAt(0)) >= 127 ? o(0xc0 | (c >>> 6)) +
+o(0x80 | (c & 0x3f)) : s
+);
+return s.join("");
+}
+
+
+var sendMessage = function(entityPath, body, contentType, callback) {
+var securityToken = getToken(entityPath);
+var entityUri = "https://" +
+m_ServiceNamespace + "." + this.environment + "/" + entityPath;
+var sendUri = entityUri + "/messages/?timeout=60";
+var xmlHttpRequest = new XMLHttpRequest();
+
+xmlHttpRequest.open("POST", sendUri, true);
+  alert('all');
+xmlHttpRequest.setRequestHeader('Content-Type', contentType);
+xmlHttpRequest.setRequestHeader("Authorization", securityToken);
+xmlHttpRequest.onreadystatechange = function () {
+if (this.readyState == 4) {
+
+var messagingResult;
+// Expects HTTP-201 (Created) when the
+// message is entered in the queue / topic.
+if (this.status == 201) {
+messagingResult =
+new MessagingResult("Success", this.status, null, this.response);
+}
+else {
+messagingResult =
+new MessagingResult("Failure", this.status, null, this.response);
+}
+
+callback(messagingResult);
+}
+};
+
+xmlHttpRequest.send(body);
+};
+
+
+
+
+
+$("#btn").click(function () {
+
+  msg = { "message": 123213123123123, "id": 1234};
+
+  sendMessage('postres',JSON.stringify(msg) ,
+      "application/json", function (messagingResult) {
+        var res = messagingResult;
+      });
+});
+
+</script>>
